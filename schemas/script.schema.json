@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "areNews script",
+  "type": "object",
+  "required": ["episodeId", "title", "date", "slides"],
+  "properties": {
+    "episodeId": { "type": "string" },
+    "title": { "type": "string" },
+    "date": { "type": "string" },
+    "voicevox": {
+      "type": "object",
+      "properties": {
+        "baseUrl": { "type": "string" },
+        "defaultSpeakers": {
+          "type": "object",
+          "properties": {
+            "china_ai": { "type": "integer" },
+            "america_ai": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "slides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slideId", "title", "lines"],
+        "properties": {
+          "slideId": { "type": "string" },
+          "title": { "type": "string" },
+          "visual": { "type": "object" },
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "speaker", "text"],
+              "properties": {
+                "id": { "type": "string" },
+                "speaker": {
+                  "type": "string",
+                  "enum": ["china_ai", "america_ai", "human_cue"]
+                },
+                "voicevoxSpeakerId": { "type": "integer" },
+                "text": { "type": "string" },
+                "note": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
