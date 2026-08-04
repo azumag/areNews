@@ -10,6 +10,7 @@ import {
   loadScriptFile,
   loadSettings,
   openScriptFile,
+  saveSettings,
   setAlwaysOnTop
 } from "./lib/tauri";
 import AppHeader from "./components/AppHeader";
@@ -43,7 +44,24 @@ export default function App() {
       try {
         const response = await loadScriptFile(path);
         loadScriptAction(response.script, response.scriptHash, response.path);
-        setSettings({ ...useAppStore.getState().settings, lastOpenedScriptPath: path });
+
+        const current = useAppStore.getState().settings;
+        const episodeBaseUrl = response.script.voicevox?.baseUrl;
+        const nextSettings = {
+          ...current,
+          lastOpenedScriptPath: path,
+          // Episode-declared VOICEVOX URL takes over the app setting on load,
+          // so switching between episodes recorded against different engine
+          // instances doesn't require a manual settings change each time.
+          voicevoxBaseUrl: episodeBaseUrl ?? current.voicevoxBaseUrl
+        };
+        setSettings(nextSettings);
+        saveSettings(nextSettings).catch((error) => {
+          pushToast("warning", `設定の保存に失敗しました: ${describeError(error)}`);
+        });
+        if (episodeBaseUrl && episodeBaseUrl !== current.voicevoxBaseUrl) {
+          pushToast("info", `台本の指定に合わせてVOICEVOX URLを ${episodeBaseUrl} に変更しました`);
+        }
       } catch (error) {
         if (isSerializedError(error) && error.kind === "validation") {
           setScriptValidationError({ path, issues: error.details ?? [] });

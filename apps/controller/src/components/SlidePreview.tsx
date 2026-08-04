@@ -41,6 +41,11 @@ export default function SlidePreview() {
       {slide.visual?.notes && <p className="visualNote">画面メモ: {slide.visual.notes}</p>}
       {slide.visual?.type && <p className="visualMeta">種別: {slide.visual.type}</p>}
       {slide.notes && <p className="visualNote">進行メモ: {slide.notes}</p>}
+      {slide.previewImage && (
+        <p className="visualMeta">
+          プレビュー画像: <code>{slide.previewImage}</code>（画像表示は未実装。将来のIssueで対応）
+        </p>
+      )}
 
       {googleSlidesUrl && (
         <div className="slidesLink">

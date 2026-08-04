@@ -1,5 +1,11 @@
 [workspace]
 members = ["core"]
+# `cargo test`/`cargo check` run from this directory with no `-p`/`--workspace`
+# flag default to just the core crate: it's the only member buildable without
+# the GTK/WebKit headers the shell package (this root package) needs on
+# Linux. Use `cargo test -p are-news-controller` (or `--workspace`) to
+# exercise the shell crate on a machine that has those headers.
+default-members = ["core"]
 
 [package]
 name = "are-news-controller"

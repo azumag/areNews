@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useAppStore } from "../store/appStore";
-import { mergeProgress } from "../lib/progress";
+import { freshProgress, mergeProgress } from "../lib/progress";
 import { describeError, loadProgress, saveProgress } from "../lib/tauri";
 
 const AUTOSAVE_DEBOUNCE_MS = 500;
@@ -14,6 +14,7 @@ export function useProgress() {
   const currentSlideId = useAppStore((s) => s.currentSlideId);
   const selectedLineId = useAppStore((s) => s.selectedLineId);
   const lineStates = useAppStore((s) => s.lineStates);
+  const progressReady = useAppStore((s) => s.progressReady);
   const applyProgress = useAppStore((s) => s.applyProgress);
   const setPendingMerge = useAppStore((s) => s.setPendingMerge);
   const pushToast = useAppStore((s) => s.pushToast);
@@ -49,6 +50,9 @@ export function useProgress() {
       } catch (error) {
         if (!cancelled) {
           pushToast("warning", `進行状態の読み込みに失敗しました: ${describeError(error)}`);
+          // Fall back to a fresh progress document so autosave can resume —
+          // otherwise progressReady would stay false for this script forever.
+          applyProgress(freshProgress(script, scriptHash, scriptPath, new Date().toISOString()));
         }
       }
     })();
@@ -59,7 +63,7 @@ export function useProgress() {
   }, [script, scriptHash, scriptPath, applyProgress, setPendingMerge, pushToast]);
 
   useEffect(() => {
-    if (!scriptHash || !scriptPath) return;
+    if (!scriptHash || !scriptPath || !progressReady) return;
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
       const progress = {
@@ -80,5 +84,14 @@ export function useProgress() {
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [script.episodeId, scriptHash, scriptPath, currentSlideId, selectedLineId, lineStates, pushToast]);
+  }, [
+    script.episodeId,
+    scriptHash,
+    scriptPath,
+    progressReady,
+    currentSlideId,
+    selectedLineId,
+    lineStates,
+    pushToast
+  ]);
 }

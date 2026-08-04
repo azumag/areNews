@@ -20,7 +20,7 @@ export default function SlideList() {
             className={`slideButton slideButton-${status}${isActive ? " active" : ""}`}
             onClick={() => selectSlide(slide.slideId)}
           >
-            <span className="slideNumber">{String(index + 1).padStart(2, "0")}</span>
+            <span className="slideNumber">{String(slide.slideNumber ?? index + 1).padStart(2, "0")}</span>
             <span className="slideTitle">{slide.title}</span>
             <span className={`slideStatusDot slideStatusDot-${status}`} aria-label={slideStatusLabel[status]} />
           </button>

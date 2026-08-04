@@ -46,6 +46,15 @@ export default function SettingsDialog() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, settings.voicevoxBaseUrl]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setSettingsOpen(false);
+    }
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isOpen, setSettingsOpen]);
+
   if (!isOpen) return null;
 
   function persist(next: typeof settings) {

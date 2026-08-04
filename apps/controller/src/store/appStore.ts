@@ -54,6 +54,11 @@ type AppState = {
   lastPlayedLineId: string | null;
   lineStates: Record<string, LineStatus>;
   pendingMerge: PendingMerge | null;
+  /** False from the moment a script loads until its saved progress has been
+   * reconciled and applied (directly, or via the keep/reset prompt). Guards
+   * autosave: saving before this is true would overwrite real saved
+   * progress with the empty state a fresh script load starts from. */
+  progressReady: boolean;
 
   playback: PlaybackPhase;
 
@@ -106,6 +111,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   lastPlayedLineId: null,
   lineStates: {},
   pendingMerge: null,
+  progressReady: true,
 
   playback: { phase: "idle" },
 
@@ -128,6 +134,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       lastPlayedLineId: null,
       lineStates: {},
       pendingMerge: null,
+      progressReady: false,
       playback: { phase: "idle" }
     }),
 
@@ -137,7 +144,8 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({
       currentSlideId: progress.currentSlideId,
       selectedLineId: progress.selectedLineId,
-      lineStates: progress.lineStates
+      lineStates: progress.lineStates,
+      progressReady: true
     }),
 
   setPendingMerge: (pending) => set({ pendingMerge: pending }),

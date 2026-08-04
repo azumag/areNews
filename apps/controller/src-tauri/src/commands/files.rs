@@ -14,11 +14,14 @@ pub struct LoadScriptResponse {
     pub path: String,
 }
 
-/// Opens a native "open file" dialog filtered to `.json`. Runs on a
-/// blocking call as recommended by tauri-plugin-dialog for use inside a
-/// synchronous Tauri command; returns `Ok(None)` if the user cancels.
+/// Opens a native "open file" dialog filtered to `.json`. Must be an async
+/// command: `blocking_pick_file()` blocks its calling thread until the
+/// dialog resolves, and tauri-plugin-dialog's own docs warn it must not run
+/// on the main thread — an async command runs on the async runtime's worker
+/// pool instead, leaving the main thread free to pump the dialog's own
+/// native event loop. Returns `Ok(None)` if the user cancels.
 #[tauri::command]
-pub fn open_script_file(app: AppHandle) -> Result<Option<String>, SerializedError> {
+pub async fn open_script_file(app: AppHandle) -> Result<Option<String>, SerializedError> {
     let picked = app
         .dialog()
         .file()

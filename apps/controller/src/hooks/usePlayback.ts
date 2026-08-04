@@ -17,8 +17,20 @@ export function usePlayback() {
   const setPlayback = useAppStore((s) => s.setPlayback);
   const setLineStatus = useAppStore((s) => s.setLineStatus);
   const selectLine = useAppStore((s) => s.selectLine);
+  const selectSlide = useAppStore((s) => s.selectSlide);
   const setLastPlayedLineId = useAppStore((s) => s.setLastPlayedLineId);
   const pushToast = useAppStore((s) => s.pushToast);
+
+  // Selecting a line always brings its slide into view too — otherwise
+  // "next unread" crossing a slide boundary plays/selects a line that's
+  // invisible in the slide list and line panes.
+  const selectFlatLine = useCallback(
+    (flat: FlatLine) => {
+      selectSlide(flat.slideId);
+      selectLine(flat.line.id);
+    },
+    [selectSlide, selectLine]
+  );
 
   const stopAudioElement = useCallback(() => {
     if (audioRef.current) {
@@ -38,11 +50,14 @@ export function usePlayback() {
   const playFlatLine = useCallback(
     async (flat: FlatLine) => {
       const speakerId = resolveSpeakerId(script, flat.line, settings);
-      if (speakerId === null) return;
+      if (speakerId === null) {
+        pushToast("warning", "話者IDが設定されていません（設定画面から既定話者を設定してください）");
+        return;
+      }
 
       stopAudioElement();
       const token = ++tokenCounter;
-      selectLine(flat.line.id);
+      selectFlatLine(flat);
       const started = applyPlaybackEvent(useAppStore.getState().playback, {
         type: "PLAY_REQUESTED",
         lineId: flat.line.id,
@@ -106,7 +121,7 @@ export function usePlayback() {
         pushToast("error", `再生に失敗しました: ${describeError(error)}`);
       }
     },
-    [script, settings, stopAudioElement, selectLine, setPlayback, setLineStatus, setLastPlayedLineId, pushToast]
+    [script, settings, stopAudioElement, selectFlatLine, setPlayback, setLineStatus, setLastPlayedLineId, pushToast]
   );
 
   const playLineById = useCallback(
@@ -131,18 +146,18 @@ export function usePlayback() {
       const followUpStates = { ...state.lineStates, [action.line.line.id]: "played" as const };
       const followUp = resolveNextUnreadAction(state.script, followUpStates, state.selectedLineId);
       if (followUp.kind === "play") void playFlatLine(followUp.line);
-      else if (followUp.kind === "select_and_wait") selectLine(followUp.line.line.id);
+      else if (followUp.kind === "select_and_wait") selectFlatLine(followUp.line);
       else if (followUp.kind === "none") pushToast("info", "未読の台詞はありません");
       return;
     }
 
     if (action.kind === "select_and_wait") {
-      selectLine(action.line.line.id);
+      selectFlatLine(action.line);
       return;
     }
 
     void playFlatLine(action.line);
-  }, [playFlatLine, selectLine, setLineStatus, pushToast]);
+  }, [playFlatLine, selectFlatLine, setLineStatus, pushToast]);
 
   const playNextUnreadForCharacter = useCallback(
     (speaker: AiSpeaker) => {

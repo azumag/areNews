@@ -14,6 +14,7 @@ export default function LineList({ playback }: Props) {
   const selectedLineId = useAppStore((s) => s.selectedLineId);
   const lineStates = useAppStore((s) => s.lineStates);
   const selectLine = useAppStore((s) => s.selectLine);
+  const voicevoxUnreachable = useAppStore((s) => s.voicevox?.reachable === false);
 
   const slide = script.slides.find((s) => s.slideId === currentSlideId) ?? script.slides[0];
 
@@ -77,6 +78,8 @@ export default function LineList({ playback }: Props) {
                         e.stopPropagation();
                         playback.playLineById(line.id);
                       }}
+                      disabled={voicevoxUnreachable}
+                      title={voicevoxUnreachable ? "VOICEVOXに接続できません" : undefined}
                     >
                       {status === "unread" ? "読む" : "読み直す"}
                     </button>

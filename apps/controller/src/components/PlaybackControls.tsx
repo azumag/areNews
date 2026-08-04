@@ -25,6 +25,10 @@ export default function PlaybackControls({ playback }: Props) {
   const script = useAppStore((s) => s.script);
   const currentSlideId = useAppStore((s) => s.currentSlideId);
   const selectSlide = useAppStore((s) => s.selectSlide);
+  // "次の未読台詞" can legitimately land on a human_cue (no synthesis needed),
+  // so it stays enabled — only actions that always require synthesis are
+  // disabled while VOICEVOX is unreachable.
+  const voicevoxUnreachable = useAppStore((s) => s.voicevox?.reachable === false);
 
   const currentIndex = script.slides.findIndex((s) => s.slideId === currentSlideId);
 
@@ -37,13 +41,21 @@ export default function PlaybackControls({ playback }: Props) {
         <button type="button" onClick={playback.playNextUnread}>
           次の未読台詞
         </button>
-        <button type="button" onClick={() => playback.playNextUnreadForCharacter("china_ai")}>
+        <button
+          type="button"
+          onClick={() => playback.playNextUnreadForCharacter("china_ai")}
+          disabled={voicevoxUnreachable}
+        >
           中華AIの次
         </button>
-        <button type="button" onClick={() => playback.playNextUnreadForCharacter("america_ai")}>
+        <button
+          type="button"
+          onClick={() => playback.playNextUnreadForCharacter("america_ai")}
+          disabled={voicevoxUnreachable}
+        >
           メリケンAIの次
         </button>
-        <button type="button" onClick={playback.replayLast}>
+        <button type="button" onClick={playback.replayLast} disabled={voicevoxUnreachable}>
           直前を再読
         </button>
         <button

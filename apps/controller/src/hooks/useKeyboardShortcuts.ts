@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useAppStore } from "../store/appStore";
+import { statusOf } from "../lib/navigation";
 import { actionForKey, resolveToggleAction, shouldSuppressShortcut } from "../lib/keymap";
 import type { UsePlaybackResult } from "./usePlayback";
 
@@ -11,6 +12,10 @@ export function useKeyboardShortcuts(playback: UsePlaybackResult) {
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
+      // Leave OS/browser shortcuts (Ctrl+R, Cmd+W, ...) alone — only bare
+      // keys and Shift-combinations (R/r, S/s) are ours to claim.
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+
       const target =
         event.target instanceof HTMLElement
           ? { tagName: event.target.tagName, isContentEditable: event.target.isContentEditable }
@@ -52,7 +57,10 @@ export function useKeyboardShortcuts(playback: UsePlaybackResult) {
           break;
         }
         case "SKIP_SELECTED":
-          if (state.selectedLineId) playback.skipLine(state.selectedLineId);
+          // Mirrors the line list's skip button, which is only enabled for unread lines.
+          if (state.selectedLineId && statusOf(state.lineStates, state.selectedLineId) === "unread") {
+            playback.skipLine(state.selectedLineId);
+          }
           break;
       }
     }

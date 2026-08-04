@@ -84,7 +84,6 @@ dependencies = [
 name = "are-news-controller-core"
 version = "0.1.0"
 dependencies = [
- "base64 0.23.0",
  "hex",
  "httpmock",
  "jsonschema",
