@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppStore } from "../store/appStore";
 import { clearAudioCache, describeError, listVoicevoxSpeakers, saveSettings, setAlwaysOnTop } from "../lib/tauri";
+import type { UseAutoUpdateResult } from "../hooks/useAutoUpdate";
 import type { AiSpeaker, VoiceParams } from "../types";
 
 const VOICE_FIELD_LABELS: { key: keyof VoiceParams; label: string; step: number }[] = [
@@ -17,7 +18,11 @@ const CHARACTERS: { key: AiSpeaker; label: string }[] = [
   { key: "america_ai", label: "メリケンAI" }
 ];
 
-export default function SettingsDialog() {
+type Props = {
+  updater: UseAutoUpdateResult;
+};
+
+export default function SettingsDialog({ updater }: Props) {
   const isOpen = useAppStore((s) => s.isSettingsOpen);
   const setSettingsOpen = useAppStore((s) => s.setSettingsOpen);
   const settings = useAppStore((s) => s.settings);
@@ -190,6 +195,30 @@ export default function SettingsDialog() {
           <button type="button" onClick={handleClearCache}>
             音声キャッシュを削除
           </button>
+
+          <div className="field">
+            <span>アプリのアップデート</span>
+            <div className="updateCheckRow">
+              <button
+                type="button"
+                onClick={() => void updater.checkNow()}
+                disabled={updater.status === "checking" || updater.status === "installing"}
+              >
+                {updater.status === "checking" ? "確認中..." : "今すぐ確認"}
+              </button>
+              <span className="fieldNote">
+                {updater.status === "available" && `v${updater.version} が利用可能です`}
+                {updater.status === "idle" && "最新バージョンです"}
+                {updater.status === "installing" && "インストール中..."}
+                {updater.status === "error" && `確認に失敗しました: ${updater.error}`}
+              </span>
+            </div>
+            {updater.status === "available" && (
+              <button type="button" onClick={() => void updater.installAndRelaunch()}>
+                インストールして再起動
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

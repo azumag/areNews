@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAppStore, DEFAULT_SETTINGS } from "./store/appStore";
 import { usePlayback } from "./hooks/usePlayback";
 import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
 import { useProgress } from "./hooks/useProgress";
+import { useAutoUpdate } from "./hooks/useAutoUpdate";
 import {
   checkVoicevox,
   describeError,
@@ -21,6 +22,7 @@ import PlaybackControls from "./components/PlaybackControls";
 import SettingsDialog from "./components/SettingsDialog";
 import ProgressMergePrompt from "./components/ProgressMergePrompt";
 import ScriptErrorPanel from "./components/ScriptErrorPanel";
+import UpdateBanner from "./components/UpdateBanner";
 import Toasts from "./components/Toasts";
 
 export default function App() {
@@ -36,6 +38,8 @@ export default function App() {
   const playback = usePlayback();
   useKeyboardShortcuts(playback);
   useProgress();
+  const updater = useAutoUpdate();
+  const [updateBannerDismissed, setUpdateBannerDismissed] = useState(false);
 
   const startupHandled = useRef(false);
 
@@ -137,6 +141,11 @@ export default function App() {
         onOpenSettings={() => setSettingsOpen(true)}
       />
 
+      <UpdateBanner
+        updater={updater}
+        dismissed={updateBannerDismissed}
+        onDismiss={() => setUpdateBannerDismissed(true)}
+      />
       <ScriptErrorPanel />
       <ProgressMergePrompt />
 
@@ -147,7 +156,7 @@ export default function App() {
       </section>
 
       <PlaybackControls playback={playback} />
-      <SettingsDialog />
+      <SettingsDialog updater={updater} />
       <Toasts />
     </main>
   );

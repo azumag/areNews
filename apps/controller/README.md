@@ -77,6 +77,29 @@ GitHub Releasesにドラフトとして公開します。タグは `controller-v
 - アプリアイコン（`src-tauri/icons/`）は暫定のプレースホルダーです。正式なブランド素材が
   用意でき次第、`npx tauri icon <画像パス>` で差し替えてください。
 
+### 自動アップデート
+
+アプリ起動時にバックグラウンドでアップデート確認を行い、新しいバージョンがあれば
+画面上部にバナー、設定画面にも状態を表示します。**自動ではインストール・再起動しません**
+（配信中に勝手に再起動すると事故になるため）。「インストールして再起動」を押した時だけ
+ダウンロード・適用・再起動します。
+
+- `tauri-plugin-updater` / `tauri-plugin-process`（`relaunch`用）を使用
+- アップデート先は `https://github.com/azumag/areNews/releases/latest/download/latest.json`。
+  GitHubの「latest release」はドラフトを含まないため、**ドラフトを公開するまで
+  ユーザーには配信されません**（上記のドラフト公開運用とそのまま噛み合います）
+- 更新パッケージの署名検証用に、公開鍵を `src-tauri/tauri.conf.json` の
+  `plugins.updater.pubkey` に埋め込み済みです
+- 署名用の秘密鍵はリポジトリには含めていません。GitHub Actionsのシークレットとして
+  以下を登録してください（値は別途お渡しします）。未設定でもビルド・公開自体は動きますが、
+  署名付きアップデート成果物（`latest.json`含む）が生成されないため、アプリ側の
+  アップデート確認は「更新なし」または失敗になります。
+  - `TAURI_SIGNING_PRIVATE_KEY`
+  - `TAURI_SIGNING_PRIVATE_KEY_PASSWORD`（今回はパスワードなしで鍵を生成したため空文字を設定、
+    またはシークレット自体を未設定のままでも構いません）
+- 秘密鍵を紛失した場合は新しい鍵を生成し直し、`pubkey`とGitHub Secretsの両方を更新してください
+  （旧鍵で署名した過去のリリースは検証できなくなります）。
+
 ## 読み込む台本
 
 `episodes/.../script.json` または `templates/script.json` と同じ形式のJSONを読み込みます。

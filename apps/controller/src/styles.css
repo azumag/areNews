@@ -460,3 +460,33 @@ button:disabled {
 .fieldNote-warning {
   color: #d9b34d;
 }
+
+.updateCheckRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.updateBanner {
+  margin: 0 32px 16px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 1px solid #4dd98f;
+  background: rgba(77, 217, 143, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.updateBanner-error {
+  border-color: #e0605f;
+  background: rgba(224, 96, 95, 0.12);
+}
+
+.updateBannerActions {
+  display: flex;
+  gap: 8px;
+}

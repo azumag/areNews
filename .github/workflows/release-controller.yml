@@ -41,6 +41,12 @@ jobs:
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Required for the updater: signs the build and generates the
+          # latest.json manifest the app's auto-updater polls. Without this
+          # secret set, tauri-action still builds and publishes normally —
+          # it just skips producing signed updater artifacts.
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         with:
           projectPath: apps/controller
           tagName: controller-v__VERSION__
