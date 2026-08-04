@@ -4,13 +4,18 @@ import { clearAudioCache, describeError, listVoicevoxSpeakers, saveSettings, set
 import type { UseAutoUpdateResult } from "../hooks/useAutoUpdate";
 import type { AiSpeaker, VoiceParams } from "../types";
 
-const VOICE_FIELD_LABELS: { key: keyof VoiceParams; label: string; step: number }[] = [
-  { key: "speedScale", label: "速度", step: 0.1 },
+// `min` guards against values that crash the VOICEVOX Engine (a negative
+// silence length triggered a real 500 in production) — HTML's `min`
+// attribute alone doesn't stop typed input, so it's enforced again in the
+// onChange handler below. `pitchScale` legitimately goes negative (it's a
+// pitch shift), so it's left unclamped.
+const VOICE_FIELD_LABELS: { key: keyof VoiceParams; label: string; step: number; min?: number }[] = [
+  { key: "speedScale", label: "速度", step: 0.1, min: 0.1 },
   { key: "pitchScale", label: "音高", step: 0.1 },
-  { key: "intonationScale", label: "抑揚", step: 0.1 },
-  { key: "volumeScale", label: "音量", step: 0.1 },
-  { key: "prePhonemeLength", label: "文頭の無音長 (秒)", step: 0.05 },
-  { key: "postPhonemeLength", label: "文末の無音長 (秒)", step: 0.05 }
+  { key: "intonationScale", label: "抑揚", step: 0.1, min: 0 },
+  { key: "volumeScale", label: "音量", step: 0.1, min: 0 },
+  { key: "prePhonemeLength", label: "文頭の無音長 (秒)", step: 0.05, min: 0 },
+  { key: "postPhonemeLength", label: "文末の無音長 (秒)", step: 0.05, min: 0 }
 ];
 
 const CHARACTERS: { key: AiSpeaker; label: string }[] = [
@@ -154,22 +159,23 @@ export default function SettingsDialog({ updater }: Props) {
             </label>
           ))}
 
-          {VOICE_FIELD_LABELS.map(({ key, label, step }) => (
+          {VOICE_FIELD_LABELS.map(({ key, label, step, min }) => (
             <label className="field" key={key}>
               <span>{label}</span>
               <input
                 type="number"
                 step={step}
+                min={min}
                 value={settings.voice[key] ?? ""}
-                onChange={(e) =>
-                  persist({
-                    ...settings,
-                    voice: {
-                      ...settings.voice,
-                      [key]: e.target.value === "" ? undefined : Number(e.target.value)
-                    }
-                  })
-                }
+                onChange={(e) => {
+                  if (e.target.value === "") {
+                    persist({ ...settings, voice: { ...settings.voice, [key]: undefined } });
+                    return;
+                  }
+                  const parsed = Number(e.target.value);
+                  const clamped = min !== undefined && Number.isFinite(parsed) ? Math.max(parsed, min) : parsed;
+                  persist({ ...settings, voice: { ...settings.voice, [key]: clamped } });
+                }}
               />
             </label>
           ))}

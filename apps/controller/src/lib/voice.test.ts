@@ -68,6 +68,34 @@ describe("resolveVoiceParams", () => {
     const params = resolveVoiceParams(line, buildSettings({ voice: {} }));
     expect(params.speedScale).toBeUndefined();
   });
+
+  it("clamps a negative pre/post-phoneme length from settings to 0", () => {
+    const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t" };
+    const params = resolveVoiceParams(
+      line,
+      buildSettings({ voice: { prePhonemeLength: -0.5, postPhonemeLength: -1 } })
+    );
+    expect(params.prePhonemeLength).toBe(0);
+    expect(params.postPhonemeLength).toBe(0);
+  });
+
+  it("clamps a negative value from the line itself, not just settings", () => {
+    const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t", voice: { volumeScale: -2 } };
+    const params = resolveVoiceParams(line, buildSettings());
+    expect(params.volumeScale).toBe(0);
+  });
+
+  it("clamps a non-positive speedScale up to the minimum instead of letting it reach VOICEVOX", () => {
+    const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t" };
+    const params = resolveVoiceParams(line, buildSettings({ voice: { speedScale: -1 } }));
+    expect(params.speedScale).toBe(0.1);
+  });
+
+  it("does not clamp pitchScale, which is legitimately negative", () => {
+    const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t" };
+    const params = resolveVoiceParams(line, buildSettings({ voice: { pitchScale: -0.1 } }));
+    expect(params.pitchScale).toBe(-0.1);
+  });
 });
 
 describe("textToSpeak", () => {

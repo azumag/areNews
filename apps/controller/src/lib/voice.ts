@@ -28,6 +28,21 @@ const VOICE_FIELDS: (keyof VoiceParams)[] = [
   "postPhonemeLength"
 ];
 
+// A negative silence length (or a zero/negative speed) crashes the
+// VOICEVOX Engine with an opaque 500. Clamp here — the single place every
+// voice param passes through on its way to synthesis — so this is
+// enforced regardless of source: a stale settings.json written before the
+// Settings dialog itself started clamping, or a hand-authored script's
+// `lines[].voice.*`. `pitchScale` is intentionally not in this map; it's a
+// pitch shift and negative values are valid.
+const VOICE_FIELD_MIN: Partial<Record<keyof VoiceParams, number>> = {
+  speedScale: 0.1,
+  intonationScale: 0,
+  volumeScale: 0,
+  prePhonemeLength: 0,
+  postPhonemeLength: 0
+};
+
 /** Per-field priority: line-level `voice.*` > app settings' voice defaults >
  * left unset entirely, so the VOICEVOX engine's own default applies. */
 export function resolveVoiceParams(line: ScriptLine, settings: Settings): VoiceParams {
@@ -35,7 +50,8 @@ export function resolveVoiceParams(line: ScriptLine, settings: Settings): VoiceP
   for (const field of VOICE_FIELDS) {
     const value = line.voice?.[field] ?? settings.voice[field];
     if (typeof value === "number") {
-      resolved[field] = value;
+      const min = VOICE_FIELD_MIN[field];
+      resolved[field] = min !== undefined ? Math.max(value, min) : value;
     }
   }
   return resolved;
