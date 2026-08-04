@@ -3,10 +3,10 @@ import type {
   CheckVoicevoxResponse,
   ClearCacheResponse,
   LoadScriptResponse,
+  PlayLineResponse,
   Progress,
   SerializedError,
   Settings,
-  SynthesizeLineResponse,
   ValidatedScript,
   VoiceParams,
   VoicevoxSpeakerInfo
@@ -42,15 +42,23 @@ export async function listVoicevoxSpeakers(baseUrl: string): Promise<VoicevoxSpe
   return invoke<VoicevoxSpeakerInfo[]>("list_voicevox_speakers", { baseUrl });
 }
 
-export type SynthesizeLineArgs = {
+export type PlayLineArgs = {
+  token: number;
   baseUrl: string;
   text: string;
   speakerId: number;
   params: VoiceParams;
 };
 
-export async function synthesizeLine(args: SynthesizeLineArgs): Promise<SynthesizeLineResponse> {
-  return invoke<SynthesizeLineResponse>("synthesize_line", { req: args });
+// Synthesizes (or serves from cache) and plays the line natively in the Rust
+// process. `token` must match what the caller filters `playback-*` events by.
+export async function playLine(args: PlayLineArgs): Promise<PlayLineResponse> {
+  const { token, ...req } = args;
+  return invoke<PlayLineResponse>("play_line", { token, req });
+}
+
+export async function stopPlayback(): Promise<void> {
+  await invoke("stop_playback");
 }
 
 export async function clearAudioCache(): Promise<ClearCacheResponse> {

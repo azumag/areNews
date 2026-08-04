@@ -6,6 +6,7 @@ target/
 dist/
 build/
 *.log
+apps/controller/src-tauri/gen/
 
 # local env
 .env

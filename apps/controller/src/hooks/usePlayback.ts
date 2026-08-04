@@ -1,16 +1,15 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect } from "react";
+import { listen } from "@tauri-apps/api/event";
 import { useAppStore } from "../store/appStore";
 import { applyPlaybackEvent, isBusy } from "../lib/playbackState";
 import { findLine, findNextUnreadForSpeaker, resolveNextUnreadAction, type FlatLine } from "../lib/navigation";
 import { resolveSpeakerId, resolveVoiceParams, textToSpeak } from "../lib/voice";
-import { describeError, synthesizeLine } from "../lib/tauri";
+import { describeError, playLine, stopPlayback } from "../lib/tauri";
 import type { AiSpeaker } from "../types";
 
 let tokenCounter = 0;
 
 export function usePlayback() {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
   const script = useAppStore((s) => s.script);
   const settings = useAppStore((s) => s.settings);
   const playback = useAppStore((s) => s.playback);
@@ -32,20 +31,52 @@ export function usePlayback() {
     [selectSlide, selectLine]
   );
 
-  const stopAudioElement = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.onended = null;
-      audioRef.current.onerror = null;
-      audioRef.current = null;
-    }
-  }, []);
-
   const stop = useCallback(() => {
-    stopAudioElement();
+    void stopPlayback();
     const result = applyPlaybackEvent(useAppStore.getState().playback, { type: "STOP" });
     setPlayback(result.next);
-  }, [setPlayback, stopAudioElement]);
+  }, [setPlayback]);
+
+  // Playback itself runs natively in the Rust process (see src-tauri's
+  // audio_player) so OBS's application audio capture — which targets a
+  // process, not this WebView — can actually pick it up. These events are
+  // how that process reports progress back; applyPlaybackEvent's token
+  // check drops anything superseded by a newer request or an explicit stop.
+  useEffect(() => {
+    const unlistenStarted = listen<number>("playback-started", (event) => {
+      const playing = applyPlaybackEvent(useAppStore.getState().playback, {
+        type: "AUDIO_STARTED",
+        token: event.payload
+      });
+      setPlayback(playing.next);
+    });
+    const unlistenEnded = listen<number>("playback-ended", (event) => {
+      const ended = applyPlaybackEvent(useAppStore.getState().playback, {
+        type: "AUDIO_ENDED",
+        token: event.payload
+      });
+      setPlayback(ended.next);
+      if (ended.markPlayedLineId) {
+        setLineStatus(ended.markPlayedLineId, "played");
+        setLastPlayedLineId(ended.markPlayedLineId);
+      }
+    });
+    const unlistenError = listen<{ token: number; message: string }>("playback-error", (event) => {
+      const failed = applyPlaybackEvent(useAppStore.getState().playback, {
+        type: "FAIL",
+        token: event.payload.token,
+        message: event.payload.message
+      });
+      setPlayback(failed.next);
+      pushToast("error", "音声の再生に失敗しました");
+    });
+
+    return () => {
+      void unlistenStarted.then((unlisten) => unlisten());
+      void unlistenEnded.then((unlisten) => unlisten());
+      void unlistenError.then((unlisten) => unlisten());
+    };
+  }, [setPlayback, setLineStatus, setLastPlayedLineId, pushToast]);
 
   const playFlatLine = useCallback(
     async (flat: FlatLine) => {
@@ -55,7 +86,6 @@ export function usePlayback() {
         return;
       }
 
-      stopAudioElement();
       const token = ++tokenCounter;
       selectFlatLine(flat);
       const started = applyPlaybackEvent(useAppStore.getState().playback, {
@@ -66,51 +96,15 @@ export function usePlayback() {
       setPlayback(started.next);
 
       try {
-        const response = await synthesizeLine({
+        await playLine({
+          token,
           baseUrl: settings.voicevoxBaseUrl,
           text: textToSpeak(flat.line),
           speakerId,
           params: resolveVoiceParams(flat.line, settings)
         });
-
-        const synthResult = applyPlaybackEvent(useAppStore.getState().playback, {
-          type: "SYNTH_DONE",
-          token
-        });
-        if (!synthResult.accepted) {
-          // A newer request (or a stop) superseded this one; drop the result.
-          return;
-        }
-
-        const audio = new Audio(response.dataUrl);
-        audioRef.current = audio;
-        audio.onended = () => {
-          const ended = applyPlaybackEvent(useAppStore.getState().playback, {
-            type: "AUDIO_ENDED",
-            token
-          });
-          setPlayback(ended.next);
-          if (ended.markPlayedLineId) {
-            setLineStatus(ended.markPlayedLineId, "played");
-            setLastPlayedLineId(ended.markPlayedLineId);
-          }
-        };
-        audio.onerror = () => {
-          const failed = applyPlaybackEvent(useAppStore.getState().playback, {
-            type: "FAIL",
-            token,
-            message: "音声の再生に失敗しました"
-          });
-          setPlayback(failed.next);
-          pushToast("error", "音声の再生に失敗しました");
-        };
-
-        await audio.play();
-        const playing = applyPlaybackEvent(useAppStore.getState().playback, {
-          type: "AUDIO_STARTED",
-          token
-        });
-        setPlayback(playing.next);
+        // Actual playback start/end/error arrives asynchronously via the
+        // "playback-*" events wired up above, keyed by this same token.
       } catch (error) {
         const failed = applyPlaybackEvent(useAppStore.getState().playback, {
           type: "FAIL",
@@ -121,7 +115,7 @@ export function usePlayback() {
         pushToast("error", `再生に失敗しました: ${describeError(error)}`);
       }
     },
-    [script, settings, stopAudioElement, selectFlatLine, setPlayback, setLineStatus, setLastPlayedLineId, pushToast]
+    [script, settings, selectFlatLine, setPlayback, pushToast]
   );
 
   const playLineById = useCallback(
@@ -185,7 +179,7 @@ export function usePlayback() {
     [setLineStatus]
   );
 
-  useEffect(() => stopAudioElement, [stopAudioElement]);
+  useEffect(() => () => void stopPlayback(), []);
 
   return {
     playback,

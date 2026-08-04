@@ -1,11 +1,11 @@
 use are_news_controller_core::{
     synthesis_cache_key, SerializedError, SpeakerInfo, VoiceParams, VoicevoxClient,
 };
-use base64::{engine::general_purpose, Engine as _};
 use serde::{Deserialize, Serialize};
-use tauri::AppHandle;
+use tauri::{AppHandle, State};
 
 use crate::audio_cache;
+use crate::audio_player::AudioPlayer;
 
 #[derive(Debug, Deserialize, Default)]
 #[serde(rename_all = "camelCase")]
@@ -78,20 +78,26 @@ pub struct SynthesizeLineRequest {
 
 #[derive(Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
-pub struct SynthesizeLineResponse {
-    pub data_url: String,
+pub struct PlayLineResponse {
     pub cache_hit: bool,
 }
 
-/// Synthesizes (or serves from cache) a single line's audio. The engine
-/// version is fetched fresh on every call — a cheap localhost round trip —
-/// so the cache key always reflects whichever engine build is actually
-/// running, even if it was swapped out mid-session.
+/// Synthesizes (or serves from cache) a single line's audio and plays it
+/// natively from this process (see `audio_player`) rather than handing WAV
+/// bytes back to the WebView — that's what lets OBS's application audio
+/// capture pick it up. The engine version is fetched fresh on every call —
+/// a cheap localhost round trip — so the cache key always reflects
+/// whichever engine build is actually running, even if it was swapped out
+/// mid-session.
 #[tauri::command]
-pub async fn synthesize_line(
+pub async fn play_line(
     app: AppHandle,
+    player: State<'_, AudioPlayer>,
+    token: u64,
     req: SynthesizeLineRequest,
-) -> Result<SynthesizeLineResponse, SerializedError> {
+) -> Result<PlayLineResponse, SerializedError> {
+    player.prepare(token);
+
     let client = VoicevoxClient::new(req.base_url);
     let engine_version = client.version().await?;
     let params: VoiceParams = req.params.into();
@@ -99,20 +105,23 @@ pub async fn synthesize_line(
     let key = synthesis_cache_key(&engine_version, req.speaker_id, &req.text, &params);
     let cache_path = audio_cache::cached_path(&app, &key)?;
 
-    if let Some(cached) = audio_cache::read_cached(&cache_path) {
-        return Ok(SynthesizeLineResponse {
-            data_url: to_data_url(&cached),
-            cache_hit: true,
-        });
-    }
+    let (wav, cache_hit) = if let Some(cached) = audio_cache::read_cached(&cache_path) {
+        (cached, true)
+    } else {
+        let wav = client
+            .synthesize(req.speaker_id, &req.text, &params)
+            .await?;
+        audio_cache::write_cache(&cache_path, &wav)?;
+        (wav, false)
+    };
 
-    let wav = client.synthesize(req.speaker_id, &req.text, &params).await?;
-    audio_cache::write_cache(&cache_path, &wav)?;
+    player.play(token, wav);
+    Ok(PlayLineResponse { cache_hit })
+}
 
-    Ok(SynthesizeLineResponse {
-        data_url: to_data_url(&wav),
-        cache_hit: false,
-    })
+#[tauri::command]
+pub fn stop_playback(player: State<'_, AudioPlayer>) {
+    player.stop();
 }
 
 #[derive(Debug, Serialize)]
@@ -129,9 +138,4 @@ pub fn clear_audio_cache(app: AppHandle) -> Result<ClearCacheResponse, Serialize
         deleted_files: cleared.deleted_files,
         freed_bytes: cleared.freed_bytes,
     })
-}
-
-fn to_data_url(bytes: &[u8]) -> String {
-    let encoded = general_purpose::STANDARD.encode(bytes);
-    format!("data:audio/wav;base64,{encoded}")
 }

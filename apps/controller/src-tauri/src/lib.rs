@@ -1,7 +1,10 @@
 mod audio_cache;
+mod audio_player;
 mod commands;
 
+use audio_player::AudioPlayer;
 use commands::{files, progress, settings, voicevox};
+use tauri::Manager;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -9,13 +12,18 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .plugin(tauri_plugin_process::init())
+        .setup(|app| {
+            app.manage(AudioPlayer::spawn(app.handle().clone()));
+            Ok(())
+        })
         .invoke_handler(tauri::generate_handler![
             files::open_script_file,
             files::load_script,
             files::validate_script_content,
             voicevox::check_voicevox,
             voicevox::list_voicevox_speakers,
-            voicevox::synthesize_line,
+            voicevox::play_line,
+            voicevox::stop_playback,
             voicevox::clear_audio_cache,
             progress::save_progress,
             progress::load_progress,

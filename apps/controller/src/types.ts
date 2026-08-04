@@ -118,8 +118,7 @@ export type CheckVoicevoxResponse = {
   error?: string | null;
 };
 
-export type SynthesizeLineResponse = {
-  dataUrl: string;
+export type PlayLineResponse = {
   cacheHit: boolean;
 };
 
