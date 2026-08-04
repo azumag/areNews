@@ -1,0 +1,52 @@
+name: Release areNews Controller
+
+# Builds the Tauri controller app and publishes the installer(s) to GitHub
+# Releases. Windows-only for now, matching the app's MVP scope (issue #55):
+# the controller targets Windows 11 first, and WebView2 — which Tauri needs
+# at build/run time — ships with windows-latest runners already.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/controller/**"
+      - "schemas/script.schema.json"
+      - ".github/workflows/release-controller.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/controller/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: apps/controller/src-tauri -> target
+
+      - name: Install frontend dependencies
+        working-directory: apps/controller
+        run: npm ci
+
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: apps/controller
+          tagName: controller-v__VERSION__
+          releaseName: "areNews Controller v__VERSION__"
+          releaseBody: |
+            Automated build from `main` (commit ${{ github.sha }}).
+            See `apps/controller/README.md` for setup and the manual test checklist.
+          releaseDraft: true
+          prerelease: false

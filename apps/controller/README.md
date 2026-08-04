@@ -58,9 +58,24 @@ npm run test
 4. `npm install`
 5. `npm run tauri:build`
 
-`src-tauri/tauri.conf.json` は `bundle.active: false` になっているため、配布用インストーラを
-作る場合は `true` に変更してください（このIssueのMVPでは開発起動の動作確認を優先し、
-配布パッケージ化は対象外としています）。
+`src-tauri/tauri.conf.json` の `bundle.active` は `true` になっており、ローカルの
+`npm run tauri:build` でもインストーラ（MSI/NSIS）が生成されます。
+
+### 自動リリース（GitHub Actions）
+
+`.github/workflows/release-controller.yml` が `main` への push（`apps/controller/**` /
+`schemas/script.schema.json` 変更時）で `windows-latest` ランナー上でビルドし、
+GitHub Releasesにドラフトとして公開します。タグは `controller-v<tauri.conf.jsonのversion>`。
+
+- Windows限定です（Issueの「MVPの配布・動作確認はWindowsを優先する」に合わせています）。
+  Linux/macOS向けは別途ランナー・依存パッケージの追加が必要です。
+- **ドラフト公開**にしています。誰でも見える形で公開する前に、GitHub上で内容を確認して
+  「Publish release」を押す運用を想定しています。即時公開にしたい場合は
+  ワークフローの `releaseDraft: true` を `false` に変更してください。
+- コード署名はしていません。未署名のためWindowsのSmartScreenで警告が出ます。
+  署名証明書を用意できる場合は別途署名ステップの追加を検討してください。
+- アプリアイコン（`src-tauri/icons/`）は暫定のプレースホルダーです。正式なブランド素材が
+  用意でき次第、`npx tauri icon <画像パス>` で差し替えてください。
 
 ## 読み込む台本
 
