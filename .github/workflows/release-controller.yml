@@ -54,5 +54,5 @@ jobs:
           releaseBody: |
             Automated build from `main` (commit ${{ github.sha }}).
             See `apps/controller/README.md` for setup and the manual test checklist.
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false

@@ -71,13 +71,14 @@ npm run test
 
 `.github/workflows/release-controller.yml` が `main` への push（`apps/controller/**` /
 `schemas/script.schema.json` 変更時）で `windows-latest` ランナー上でビルドし、
-GitHub Releasesにドラフトとして公開します。タグは `controller-v<tauri.conf.jsonのversion>`。
+GitHub Releasesに**即時公開**します。タグは `controller-v<tauri.conf.jsonのversion>`。
 
 - Windows限定です（Issueの「MVPの配布・動作確認はWindowsを優先する」に合わせています）。
   Linux/macOS向けは別途ランナー・依存パッケージの追加が必要です。
-- **ドラフト公開**にしています。誰でも見える形で公開する前に、GitHub上で内容を確認して
-  「Publish release」を押す運用を想定しています。即時公開にしたい場合は
-  ワークフローの `releaseDraft: true` を `false` に変更してください。
+- **即時公開**（`releaseDraft: false`）です。`tauri.conf.json` の `version` を上げずに
+  `apps/controller` へpushすると、同じタグ（例: `controller-v0.1.0`）のリリースが
+  ビルドのたびに上書き公開されます。公開前にレビューを挟みたい場合は
+  ワークフローの `releaseDraft: false` を `true` に戻してください。
 - コード署名はしていません。未署名のためWindowsのSmartScreenで警告が出ます。
   署名証明書を用意できる場合は別途署名ステップの追加を検討してください。
 - アプリアイコン（`src-tauri/icons/`）は暫定のプレースホルダーです。正式なブランド素材が
@@ -92,8 +93,10 @@ GitHub Releasesにドラフトとして公開します。タグは `controller-v
 
 - `tauri-plugin-updater` / `tauri-plugin-process`（`relaunch`用）を使用
 - アップデート先は `https://github.com/azumag/areNews/releases/latest/download/latest.json`。
-  GitHubの「latest release」はドラフトを含まないため、**ドラフトを公開するまで
-  ユーザーには配信されません**（上記のドラフト公開運用とそのまま噛み合います）
+  リリースは即時公開なので、`main` へのpush（ビルド成功）がそのままユーザーへの
+  アップデート配信になります。公開前レビューを挟みたくなった場合は上記の通り
+  `releaseDraft` をドラフトに戻してください（ドラフトはGitHubの「latest release」に
+  含まれないため、アップデーター側からは見えなくなります）。
 - 更新パッケージの署名検証用に、公開鍵を `src-tauri/tauri.conf.json` の
   `plugins.updater.pubkey` に埋め込み済みです
 - 署名用の秘密鍵はリポジトリには含めていません。GitHub Actionsのシークレットとして
