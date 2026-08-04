@@ -1,3 +1,6 @@
+[workspace]
+members = ["core"]
+
 [package]
 name = "are-news-controller"
 version = "0.1.0"
@@ -12,7 +15,8 @@ tauri-build = { version = "2", features = [] }
 
 [dependencies]
 tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-reqwest = { version = "0.12", features = ["json"] }
-base64 = "0.22"
+are-news-controller-core = { path = "core" }
+base64 = "0.23.0"

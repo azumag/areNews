@@ -20,6 +20,13 @@
         }
       }
     },
+    "presentation": {
+      "type": "object",
+      "properties": {
+        "googleSlidesUrl": { "type": "string" },
+        "exportedSlidesDir": { "type": "string" }
+      }
+    },
     "slides": {
       "type": "array",
       "items": {
@@ -27,7 +34,10 @@
         "required": ["slideId", "title", "lines"],
         "properties": {
           "slideId": { "type": "string" },
+          "slideNumber": { "type": "integer" },
           "title": { "type": "string" },
+          "notes": { "type": "string" },
+          "previewImage": { "type": "string" },
           "visual": { "type": "object" },
           "lines": {
             "type": "array",
@@ -42,7 +52,19 @@
                 },
                 "voicevoxSpeakerId": { "type": "integer" },
                 "text": { "type": "string" },
-                "note": { "type": "string" }
+                "spokenText": { "type": "string" },
+                "note": { "type": "string" },
+                "voice": {
+                  "type": "object",
+                  "properties": {
+                    "speedScale": { "type": "number" },
+                    "pitchScale": { "type": "number" },
+                    "intonationScale": { "type": "number" },
+                    "volumeScale": { "type": "number" },
+                    "prePhonemeLength": { "type": "number" },
+                    "postPhonemeLength": { "type": "number" }
+                  }
+                }
               }
             }
           }
