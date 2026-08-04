@@ -1,0 +1,45 @@
+{
+  "episodeId": "YYYY-MM-DD-slug",
+  "title": "政経ニュースコーナー",
+  "date": "YYYY-MM-DD",
+  "voicevox": {
+    "baseUrl": "http://127.0.0.1:50021",
+    "defaultSpeakers": {
+      "china_ai": 8,
+      "america_ai": 13
+    }
+  },
+  "slides": [
+    {
+      "slideId": "s001",
+      "title": "タイトル",
+      "visual": {
+        "type": "title",
+        "imagePrompt": "",
+        "notes": ""
+      },
+      "lines": [
+        {
+          "id": "s001-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "今日も世界はだいたい揉めているアル。",
+          "note": "冒頭の軽い入り"
+        },
+        {
+          "id": "s001-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "マーケットは混乱もチャンスに変える。今日のニュースを見ていこう。",
+          "note": "明るく受ける"
+        },
+        {
+          "id": "s001-l003",
+          "speaker": "human_cue",
+          "text": "ここで人間コメント。今日扱うテーマを一言で説明する。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    }
+  ]
+}
