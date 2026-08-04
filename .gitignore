@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+target/
+
+# build outputs
+dist/
+build/
+*.log
+
+# local env
+.env
+.env.*
+!.env.example
+
+# local app state
+.DS_Store
+.vscode/
+.idea/
+
+# generated audio cache
+*.wav
+*.mp3
