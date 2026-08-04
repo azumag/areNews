@@ -1,0 +1,199 @@
+:root {
+  color: #f4f5f7;
+  background: #111318;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 960px;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #272f49, #111318 42%);
+}
+
+button,
+.fileButton {
+  border: 1px solid #454b5e;
+  border-radius: 10px;
+  background: #202432;
+  color: #f4f5f7;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover,
+.fileButton:hover {
+  background: #2c3142;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.eyebrow,
+.meta {
+  margin: 0;
+  color: #aab0c0;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.fileButton input {
+  display: none;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  padding: 20px 32px 72px;
+}
+
+.slides,
+.stage {
+  background: rgba(16, 18, 25, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
+}
+
+.slides h2,
+.stage h2 {
+  margin-top: 0;
+}
+
+.slideButton {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: left;
+  align-items: center;
+}
+
+.slideButton span {
+  color: #aab0c0;
+  font-variant-numeric: tabular-nums;
+}
+
+.slideButton.active {
+  border-color: #7aa2ff;
+  background: #253153;
+}
+
+.stageHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.slideControls {
+  display: flex;
+  gap: 8px;
+}
+
+.visualNote {
+  margin: 0 0 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #d8dbea;
+}
+
+.lines {
+  display: grid;
+  gap: 14px;
+}
+
+.line {
+  padding: 18px;
+  border-radius: 16px;
+  background: #181b25;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.line-china_ai {
+  border-left: 6px solid #d94d4d;
+}
+
+.line-america_ai {
+  border-left: 6px solid #4d83d9;
+}
+
+.line-human_cue {
+  border-left: 6px solid #d9b34d;
+}
+
+.lineTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.speaker {
+  font-weight: 900;
+}
+
+.speakerId,
+.line small,
+.humanCue {
+  color: #aab0c0;
+}
+
+.line p {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+.lineActions {
+  margin-top: 12px;
+}
+
+.statusBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 32px;
+  background: #0a0c11;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d8dbea;
+}
