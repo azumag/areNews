@@ -1,0 +1,31 @@
+{
+  "episodeId": "YYYY-MM-DD-slug",
+  "title": "政経ニュースコーナー",
+  "aspectRatio": "16:9",
+  "theme": {
+    "background": "dark-newsroom",
+    "accent": "red-blue",
+    "font": "Noto Sans JP"
+  },
+  "slides": [
+    {
+      "id": "s001",
+      "kind": "title",
+      "title": "政経ニュースコーナー",
+      "subtitle": "今日の世界、だいたい燃えてます",
+      "bullets": [],
+      "visuals": []
+    },
+    {
+      "id": "s002",
+      "kind": "agenda",
+      "title": "今日の見出し",
+      "bullets": [
+        "重大ニュース1",
+        "重大ニュース2",
+        "こぼれ話ラッシュ"
+      ],
+      "visuals": []
+    }
+  ]
+}
