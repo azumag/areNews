@@ -24,24 +24,24 @@ export const sampleEpisode: EpisodeScript = {
           id: "s001-l001",
           speaker: "china_ai",
           voicevoxSpeakerId: 8,
-          text: "今日も世界は、だいたい揉めているアル。まずは事実を確認するヨ。"
+          text: "あずまぐ同志、今日も世界では重要な出来事が重なっています。揉め事だけは計画なしでも増産されますね。"
         },
         {
           id: "s001-l002",
           speaker: "america_ai",
           voicevoxSpeakerId: 13,
-          text: "混乱はリスクであり、同時にチャンスでもある。今日の政経ニュースを見ていこう。"
+          text: "今日は事実と解釈を分けて見ていきます。市場は混乱にも値札を付けますが、僕たちまで同じ速さで判断する必要はありません。"
         },
         {
           id: "s001-l003",
           speaker: "human_cue",
-          text: "ここで人間が、今日扱うテーマを一言で説明する。"
+          text: "今日の重大ニュースと、視聴者に持ち帰ってほしい問いを一言で紹介する。"
         }
       ]
     },
     {
       slideId: "s002",
-      title: "見方の対立",
+      title: "見方の違い",
       visual: {
         type: "two-perspectives",
         notes: "左右に中華AI・メリケンAIの見方を置く"
@@ -51,18 +51,18 @@ export const sampleEpisode: EpisodeScript = {
           id: "s002-l001",
           speaker: "china_ai",
           voicevoxSpeakerId: 8,
-          text: "これは市場の問題ではなく、誰が負担を押しつけられているかの問題アル。"
+          text: "あずまぐ同志、これは市場価格だけでなく、最終的な負担が誰へ回るかを見る問題です。請求書には思想がなくても、送り先には階級があります。"
         },
         {
           id: "s002-l002",
           speaker: "america_ai",
           voicevoxSpeakerId: 13,
-          text: "いや、制度設計が悪いと投資も消費も冷える。持続可能性を見ない議論は危険だ。"
+          text: "その点は否定しませんが、制度が持続しなければ支援も続きません。僕としては善意にも保守費用の欄を付けてほしいところです。"
         },
         {
           id: "s002-l003",
           speaker: "human_cue",
-          text: "ここで人間が、生活費・税金・仕事への影響に引き寄せて話す。"
+          text: "生活費、税金、仕事への影響について、どちらの見方に現実味があるか話す。"
         }
       ]
     }
