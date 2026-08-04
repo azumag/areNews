@@ -1,0 +1,1393 @@
+{
+  "$schema": "../../schemas/slide-spec.schema.json",
+  "schemaVersion": "1.0",
+  "episodeId": "2026-08-04-pilot",
+  "title": "危機対応のツケは誰が払う？",
+  "subtitle": "戦争・円・消費税から見る、守られる人と負担する人",
+  "date": "2026-08-04",
+  "status": "outline-ready",
+  "estimatedDurationSec": 1800,
+  "slideCount": 20,
+  "theme": {
+    "name": "dark-newsroom",
+    "aspectRatio": "16:9",
+    "canvas": {
+      "width": 1920,
+      "height": 1080
+    },
+    "fonts": {
+      "primary": "Noto Sans JP",
+      "fallback": [
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "colors": {
+      "background": "#11151B",
+      "text": "#F4F6F8",
+      "chinaAi": "#E44D5E",
+      "americaAi": "#4B8BFF",
+      "human": "#F2C94C",
+      "verified": "#38B27A",
+      "estimate": "#E6B84A",
+      "unverified": "#B58CFF",
+      "correction": "#FF8A4C"
+    },
+    "safeAreas": {
+      "sourceStripHeightPx": 60,
+      "subtitleOverlayReservePx": 140
+    }
+  },
+  "generation": {
+    "target": "Google Slides",
+    "editableShapesPreferred": true,
+    "speakerNotesIncludeFullSources": true,
+    "imagePolicy": {
+      "victimPhotos": "forbidden",
+      "personPhotos": "official-or-clearly-licensed",
+      "fallback": "name-and-silhouette",
+      "mapsAndDiagrams": "prefer-editable-vectors"
+    }
+  },
+  "contentRules": {
+    "oneThesisPerSlide": true,
+    "maxBodyItems": 5,
+    "sourceStripRequiredWhenSourced": true,
+    "statusBadgeVocabulary": [
+      "verified",
+      "estimate",
+      "unverified",
+      "correction"
+    ],
+    "speakerIds": [
+      "china_ai",
+      "america_ai",
+      "human_cue"
+    ]
+  },
+  "slides": [
+    {
+      "id": "s001",
+      "kind": "title",
+      "durationSec": 45,
+      "title": "危機対応のツケは誰が払う？",
+      "subtitle": "戦争・円・消費税から見る、守られる人と負担する人",
+      "badges": [],
+      "onScreen": [
+        "政経ニュースコーナー",
+        "2026年8月4日"
+      ],
+      "visuals": [
+        {
+          "type": "connected-icons",
+          "items": [
+            "タンカー",
+            "円マーク",
+            "買い物かご"
+          ],
+          "background": [
+            "薄い世界地図",
+            "日本列島"
+          ],
+          "characters": [
+            "china_ai:left-bottom",
+            "human:center-bottom",
+            "america_ai:right-bottom"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "今日のテーマを端的に紹介"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "危機にも値札が付くという角度で受ける"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "番組の狙いを一言で説明"
+        }
+      ],
+      "humanCue": "戦争、為替、税制を『誰が負担するか』という一本の問いで見ると宣言する。",
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s002",
+      "kind": "agenda",
+      "durationSec": 45,
+      "title": "今日の重大ニュースは3本",
+      "badges": [],
+      "onScreen": [
+        "ホルムズ海峡――戦争が電気代へ届くまで",
+        "日米の円買い介入――自由市場を政府が救う日",
+        "食料品消費税1％案――減税と制度コスト",
+        "こぼれ話：山本太郎／ひろゆき新党構想／首相／警察／国旗／関税"
+      ],
+      "visuals": [
+        {
+          "type": "agenda-cards",
+          "majorCards": 3,
+          "minorTicker": true
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "重大3本を短く列挙"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "後半は統治の雑さも見ると予告"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "全体の尺と進行を案内"
+        }
+      ],
+      "humanCue": "重大ニュースを先に、後半にこぼれ話をまとめて扱うと説明する。",
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s003",
+      "kind": "thesis-flow",
+      "durationSec": 60,
+      "title": "危機対応のコストは消えない。移る。",
+      "badges": [],
+      "onScreen": [
+        "戦争・制裁 → 輸送・保険コスト",
+        "原油・円相場 → 物価・生活費",
+        "減税・給付・金利 → 家計・事業者・将来世代"
+      ],
+      "visuals": [
+        {
+          "type": "flow",
+          "nodes": [
+            "戦争・制裁",
+            "輸送・保険",
+            "原油・円",
+            "物価・生活費",
+            "減税・給付・金利"
+          ],
+          "branches": [
+            "家計",
+            "事業者",
+            "将来世代"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "負担の移転を説明"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "市場価格は負担の行き先を可視化すると補足"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "誰へ移ったかを追うと宣言"
+        }
+      ],
+      "humanCue": "ニュースごとに『負担が消えたか』ではなく『誰へ移ったか』を見る。",
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s004",
+      "kind": "map-and-status",
+      "durationSec": 120,
+      "title": "交渉はあるのか、ないのか",
+      "badges": [
+        {
+          "label": "確認済み・当事者主張を分離",
+          "status": "verified"
+        }
+      ],
+      "onScreen": [
+        "米国側：交渉は進んでいる（当事者の主張）",
+        "イラン側：交渉はない（当事者の主張）",
+        "貨物船が飛来物で被弾（確認済み）",
+        "攻撃主体は未確定",
+        "約6,000人の船員が足止め"
+      ],
+      "visuals": [
+        {
+          "type": "regional-map",
+          "regions": [
+            "イラン",
+            "オマーン",
+            "UAE",
+            "ホルムズ海峡"
+          ],
+          "markers": [
+            {
+              "kind": "warning-unknown",
+              "label": "被弾地点"
+            }
+          ]
+        },
+        {
+          "type": "status-cards",
+          "statuses": [
+            "当事者の主張",
+            "確認済み",
+            "未確認"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "確認済み事実を説明"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "両国の発言を事実と混同しないよう整理"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "交渉発表をどこまで信用するか問う"
+        }
+      ],
+      "humanCue": "『交渉している』という発表を、市民や市場はどこまで信用してよいか。",
+      "sourceLabel": "出典: IMO (2026-07-08), Reuters (2026-08-04)",
+      "sources": [
+        {
+          "name": "IMO",
+          "date": "2026-07-08",
+          "url": "https://www.imo.org/en/mediacentre/secretarygeneral/pages/new-attacks-on-ships-in-the-strait-of-hormuz.aspx",
+          "strength": "A"
+        },
+        {
+          "name": "Reuters",
+          "date": "2026-08-04",
+          "url": "https://www.reuters.com/world/middle-east/status-us-iran-talks-uncertain-ship-struck-hormuz-2026-08-04/",
+          "strength": "B"
+        }
+      ],
+      "notes": [
+        "攻撃主体をイランと断定しない",
+        "海峡を完全封鎖と表現しない",
+        "民間船舶への攻撃は両AIとも正当化しない"
+      ],
+      "updateBeforeRecording": true,
+      "dynamicTokens": {
+        "usIranTalkStatus": {
+          "type": "string",
+          "required": true
+        },
+        "shipAttackAttribution": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "id": "s005",
+      "kind": "big-number-flow",
+      "durationSec": 90,
+      "title": "日本の原油、中東依存 約95.1％",
+      "badges": [
+        {
+          "label": "2024年度速報",
+          "status": "verified"
+        }
+      ],
+      "onScreen": [
+        "95.1%",
+        "原油 → 海上保険・運賃 → ガソリン・電気・物流・食品",
+        "2026年3月、国家備蓄原油を放出"
+      ],
+      "visuals": [
+        {
+          "type": "big-number",
+          "value": "95.1%",
+          "caption": "日本の原油輸入に占める中東地域"
+        },
+        {
+          "type": "supply-chain",
+          "nodes": [
+            "ホルムズ海峡",
+            "タンカー",
+            "日本",
+            "生活費"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "エネルギー依存を公共政策の問題として説明"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "備蓄は時間を買うが供給源ではないと補足"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "ガソリン・電気代の実感を話す"
+        }
+      ],
+      "humanCue": "最近のガソリン代や電気代で、中東情勢が生活へ届く感覚があったか。",
+      "sourceLabel": "出典: 資源エネルギー庁、経済産業省",
+      "sources": [
+        {
+          "name": "資源エネルギー庁",
+          "url": "https://www.enecho.meti.go.jp/about/special/johoteikyo/energyissue2025_1.html",
+          "strength": "A"
+        },
+        {
+          "name": "経済産業省",
+          "date": "2026-03-24",
+          "url": "https://www.meti.go.jp/press/2025/03/20260324004/20260324004.html",
+          "strength": "A"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s006",
+      "kind": "two-perspectives",
+      "durationSec": 120,
+      "title": "抑止力か、介入が生む不安定化か",
+      "badges": [],
+      "onScreen": [
+        "中華AI：軍事介入と制裁が交渉余地を狭める",
+        "メリケンAI：航行の自由と核拡散防止には抑止も必要",
+        "共通項：民間船舶への攻撃は正当化しない"
+      ],
+      "visuals": [
+        {
+          "type": "two-column-debate",
+          "left": {
+            "speaker": "china_ai",
+            "points": [
+              "軍事介入",
+              "制裁",
+              "資源輸送路の圧力装置化"
+            ]
+          },
+          "right": {
+            "speaker": "america_ai",
+            "points": [
+              "航行の自由",
+              "核拡散防止",
+              "政権の予測不能性"
+            ]
+          },
+          "common": "民間船舶への攻撃は正当化しない"
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "介入が生む不安定化を論じる"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "抑止の必要性と米政権の予測不能性を論じる"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "妥当な点を認め日本の備えへ接続"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "日本の備えを問う"
+        }
+      ],
+      "humanCue": "日本は中東依存を減らすと言い続けてきたが、生活を守る備えは進んだと感じるか。",
+      "sourceLabel": "出典: IMO, Reuters, 資源エネルギー庁",
+      "sources": [
+        {
+          "name": "IMO",
+          "date": "2026-07-08",
+          "url": "https://www.imo.org/en/mediacentre/secretarygeneral/pages/new-attacks-on-ships-in-the-strait-of-hormuz.aspx",
+          "strength": "A"
+        },
+        {
+          "name": "Reuters",
+          "date": "2026-08-04",
+          "url": "https://www.reuters.com/world/middle-east/status-us-iran-talks-uncertain-ship-struck-hormuz-2026-08-04/",
+          "strength": "B"
+        },
+        {
+          "name": "資源エネルギー庁",
+          "url": "https://www.enecho.meti.go.jp/about/special/johoteikyo/energyissue2025_1.html",
+          "strength": "A"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s007",
+      "kind": "timeline-big-numbers",
+      "durationSec": 120,
+      "title": "40年ぶりの円安に、日米が協調介入",
+      "badges": [
+        {
+          "label": "為替水準は要当日更新",
+          "status": "estimate"
+        }
+      ],
+      "onScreen": [
+        "約164円付近 → 協調円買い介入 → 約157円台",
+        "11兆7,349億円：前回期間の公式額",
+        "最大365.8億ドル：今回追加分の市場推計"
+      ],
+      "visuals": [
+        {
+          "type": "line-chart-placeholder",
+          "series": "USDJPY",
+          "highlight": [
+            "pre-intervention",
+            "intervention",
+            "post-intervention"
+          ]
+        },
+        {
+          "type": "number-cards",
+          "cards": [
+            {
+              "value": "11兆7,349億円",
+              "status": "verified",
+              "caption": "4月28日〜5月27日"
+            },
+            {
+              "value": "最大365.8億ドル",
+              "status": "estimate",
+              "caption": "7月末〜8月初めの推計"
+            }
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "市場の動きを説明"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "公式額と推計を混ぜないよう整理"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "円安・円高で困ることを挙げる"
+        }
+      ],
+      "humanCue": "円安で困ることと、逆に円高方向へ戻ると困ることを生活・投資の両面から挙げる。",
+      "sourceLabel": "出典: 財務省, Reuters (2026-08-03・04)",
+      "sources": [
+        {
+          "name": "財務省",
+          "date": "2026-05-29",
+          "url": "https://www.mof.go.jp/english/policy/international_policy/reference/feio/monthly/20260529e.html",
+          "strength": "A"
+        },
+        {
+          "name": "Reuters",
+          "date": "2026-08-03",
+          "url": "https://www.reuters.com/world/asia-pacific/japan-may-have-intervened-fx-market-by-spending-3658-billion-buy-yen-2026-08-03/",
+          "strength": "B"
+        },
+        {
+          "name": "Reuters",
+          "date": "2026-08-04",
+          "url": "https://www.reuters.com/world/asia-pacific/japan-us-likely-intervene-again-if-yen-resumes-slide-ex-boj-official-says-2026-08-04/",
+          "strength": "B"
+        }
+      ],
+      "notes": [
+        "二つの金額は対象期間が異なる"
+      ],
+      "updateBeforeRecording": true,
+      "dynamicTokens": {
+        "usdJpyPreIntervention": {
+          "type": "number",
+          "required": true
+        },
+        "usdJpyPostIntervention": {
+          "type": "number",
+          "required": true
+        },
+        "usdJpyAsOf": {
+          "type": "datetime",
+          "required": true
+        }
+      }
+    },
+    {
+      "id": "s008",
+      "kind": "process-diagram",
+      "durationSec": 90,
+      "title": "日本は円を買い、米国はユーロを売った",
+      "badges": [
+        {
+          "label": "米国側の狙いは市場分析",
+          "status": "estimate"
+        }
+      ],
+      "onScreen": [
+        "日本：財務相の判断 → 日銀が実務 → 円買い",
+        "米国：米財務省 → ユーロ売り → 円買い",
+        "分析：ドル安シグナルを避ける狙い"
+      ],
+      "visuals": [
+        {
+          "type": "dual-process",
+          "left": [
+            "財務相",
+            "日銀（代理実務）",
+            "円買い"
+          ],
+          "right": [
+            "米財務省",
+            "ユーロ売り",
+            "円買い"
+          ],
+          "center": "為替市場"
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "国家が市場価格を支える構図を指摘"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "異例の手法と米国側の利害を説明"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "自由市場と政府介入の線引きを問う"
+        }
+      ],
+      "humanCue": "過度な変動への介入はどこまで許容できるか。価格統制との違いは何か。",
+      "sourceLabel": "出典: 財務省, Reuters (2026-08-03)",
+      "sources": [
+        {
+          "name": "財務省",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/feio/index.html",
+          "strength": "A"
+        },
+        {
+          "name": "Reuters",
+          "date": "2026-08-03",
+          "url": "https://www.reuters.com/business/finance/us-shakes-up-currency-markets-with-talk-unusual-yen-buying-via-selling-euros-2026-08-03/",
+          "strength": "B"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s009",
+      "kind": "tradeoff-matrix",
+      "durationSec": 120,
+      "title": "円の痛みは、止めても別の場所へ行く",
+      "badges": [],
+      "onScreen": [
+        "円安：輸入物価↑／外国資産の円評価↑",
+        "円高方向：輸入負担↓／輸出企業の利益圧迫",
+        "利上げ：円安対策／住宅ローン・資金調達負担↑",
+        "介入は時間を買う。構造までは変えない。"
+      ],
+      "visuals": [
+        {
+          "type": "tradeoff-matrix",
+          "columns": [
+            "政策・相場",
+            "助かる側",
+            "負担が増える側"
+          ],
+          "rows": [
+            "円安",
+            "円高方向",
+            "利上げ"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "短期介入の合理性を説明"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "負担配分と住宅ローンへの波及を指摘"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "金利差・財政への信頼が残ると返す"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "円安と住宅ローンの怖さを比較"
+        }
+      ],
+      "humanCue": "円安を止めるための利上げと、住宅ローン負担増のどちらをより怖いと感じるか。",
+      "sourceLabel": "出典: 財務省, Reuters",
+      "sources": [
+        {
+          "name": "財務省",
+          "url": "https://www.mof.go.jp/policy/international_policy/reference/feio/index.html",
+          "strength": "A"
+        },
+        {
+          "name": "Reuters",
+          "date": "2026-08-03",
+          "url": "https://www.reuters.com/world/asia-pacific/japan-may-have-intervened-fx-market-by-spending-3658-billion-buy-yen-2026-08-03/",
+          "strength": "B"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s010",
+      "kind": "policy-change",
+      "durationSec": 120,
+      "title": "8％ → 1％、給付を足して「実質ゼロ」",
+      "badges": [
+        {
+          "label": "法案未成立",
+          "status": "unverified"
+        }
+      ],
+      "onScreen": [
+        "現行：飲食料品8％",
+        "案：2027年4月から1％",
+        "期間：2年間",
+        "所得連動給付を併用"
+      ],
+      "visuals": [
+        {
+          "type": "rate-change",
+          "from": "8%",
+          "to": "1%",
+          "benefitOverlay": "給付で実質0%",
+          "exceptions": [
+            "酒類",
+            "外食"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "家計支援としての効果を説明"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "決定済みではないと制度段階を整理"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "スーパーでの生活実感へ接続"
+        }
+      ],
+      "humanCue": "食費の軽減は、家計の感覚としてどの程度大きいと思うか。",
+      "sourceLabel": "出典: 首相官邸 (2026-06-17), 国税庁, Reuters",
+      "sources": [
+        {
+          "name": "首相官邸",
+          "date": "2026-06-17",
+          "url": "https://www.kantei.go.jp/jp/105/statement/2026/0617naigai.html",
+          "strength": "A"
+        },
+        {
+          "name": "国税庁",
+          "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6303.htm",
+          "strength": "A"
+        },
+        {
+          "name": "Reuters",
+          "date": "2026-07-30",
+          "url": "https://www.reuters.com/world/asia-pacific/japan-pm-instructs-ruling-party-proceed-with-temporary-sales-tax-cut-2026-07-30/",
+          "strength": "B"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": true,
+      "dynamicTokens": {
+        "taxProposalStatus": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "id": "s011",
+      "kind": "comparison",
+      "durationSec": 90,
+      "title": "1％は、レジの壁を越える近道なのか",
+      "badges": [],
+      "onScreen": [
+        "0％案：制度上の扱いが大きく変わる",
+        "1％案：税率変更の枠内でより早く対応できるとの声",
+        "給付併用で制度は複雑化",
+        "改修負担が消えるわけではない"
+      ],
+      "visuals": [
+        {
+          "type": "two-column-comparison",
+          "left": {
+            "label": "0％案",
+            "points": [
+              "当初公約",
+              "制度変更が大きい",
+              "改修に時間との声"
+            ]
+          },
+          "right": {
+            "label": "1％案",
+            "points": [
+              "税率変更の枠内",
+              "実施速度",
+              "給付で複雑化"
+            ]
+          },
+          "center": "速度 vs 複雑さ"
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "実装速度を評価"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "事業者へ外部化されるコストを指摘"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "IT・会計システム改修の現実を話す"
+        }
+      ],
+      "humanCue": "税率変更をシステムへ反映する側として、何が一番壊れやすいか。",
+      "sourceLabel": "出典: テレビ朝日 (2026-04-30・06-18)",
+      "sources": [
+        {
+          "name": "テレビ朝日",
+          "date": "2026-04-30",
+          "url": "https://news.tv-asahi.co.jp/news_politics/articles/900189494.html",
+          "strength": "B"
+        },
+        {
+          "name": "テレビ朝日",
+          "date": "2026-06-18",
+          "url": "https://news.tv-asahi.co.jp/news_politics/articles/900193119.html",
+          "strength": "B"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s012",
+      "kind": "three-stakeholders",
+      "durationSec": 120,
+      "title": "家計は助かる。では誰が直し、誰が埋める？",
+      "badges": [],
+      "onScreen": [
+        "家計：食費負担の軽減",
+        "事業者：レジ・会計・請求書の改修",
+        "財政・市場：財源、国債、金利、円への評価",
+        "2年後、本当に8％へ戻せるか"
+      ],
+      "visuals": [
+        {
+          "type": "stakeholder-triangle",
+          "nodes": [
+            "家計",
+            "事業者",
+            "財政・市場"
+          ],
+          "center": "1％案"
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "逆進性の緩和を評価"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "期間限定・給付併用の管理コストを指摘"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "恒久的再分配との比較を提示"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "個人事業主の実務負担を問う"
+        }
+      ],
+      "humanCue": "個人事業主として、税率変更で最も面倒になる作業は何か。",
+      "sourceLabel": "出典: 首相官邸, 国税庁, Reuters, FNN",
+      "sources": [
+        {
+          "name": "首相官邸",
+          "date": "2026-06-17",
+          "url": "https://www.kantei.go.jp/jp/105/statement/2026/0617naigai.html",
+          "strength": "A"
+        },
+        {
+          "name": "国税庁",
+          "url": "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6303.htm",
+          "strength": "A"
+        },
+        {
+          "name": "FNN",
+          "date": "2026-06-22",
+          "url": "https://www.fnn.jp/articles/FNN/1063603",
+          "strength": "B"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s013",
+      "kind": "section-break",
+      "durationSec": 20,
+      "title": "政治のこぼれ話、7本立て",
+      "subtitle": "重大ではない。だが統治の癖はよく見える。",
+      "badges": [],
+      "onScreen": [],
+      "visuals": [
+        {
+          "type": "meter",
+          "from": "重大度",
+          "to": "雑さ",
+          "icons": [
+            "政党",
+            "SNS",
+            "警察",
+            "国旗",
+            "関税"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "テンポを上げる宣言"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "雑事にも制度の本性が出ると受ける"
+        }
+      ],
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s014",
+      "kind": "person-organization",
+      "durationSec": 100,
+      "title": "カリスマ政党は、組織へ変われるか",
+      "badges": [
+        {
+          "label": "代表選結果・新党名は要当日確認",
+          "status": "unverified"
+        }
+      ],
+      "onScreen": [
+        "山本太郎氏：代表辞任・政界引退",
+        "80km/h制限を149km/hで走行",
+        "健康回復を最優先",
+        "新代表・新党名へ移行"
+      ],
+      "visuals": [
+        {
+          "type": "organization-transition",
+          "from": "創業者中心",
+          "to": "集団運営？",
+          "personImagePolicy": "official-or-silhouette"
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "健康問題と責任問題を分けて事実説明"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "創業者依存型組織の事業承継になぞらえる"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "山本氏の功罪と本人不在でも続く政策を話す"
+        }
+      ],
+      "humanCue": "山本太郎氏が日本政治へ残したものと、本人不在でも続いてほしい政策は何か。",
+      "sourceLabel": "出典: れいわ新選組, FNN・共同 (2026-07-09)",
+      "sources": [
+        {
+          "name": "れいわ新選組",
+          "url": "https://reiwa-shinsengumi.com/reiwa-election_3/",
+          "strength": "A"
+        },
+        {
+          "name": "FNN",
+          "date": "2026-07-09",
+          "url": "https://www.fnn.jp/articles/-/1072759",
+          "strength": "B"
+        },
+        {
+          "name": "共同通信配信",
+          "date": "2026-07-09",
+          "url": "https://news.jp/i/1447891242632561253",
+          "strength": "B"
+        }
+      ],
+      "notes": [
+        "健康問題を笑いにしない",
+        "新代表名を推測しない"
+      ],
+      "updateBeforeRecording": true,
+      "dynamicTokens": {
+        "reiwaLeader": {
+          "type": "string",
+          "required": false
+        },
+        "reiwaNewName": {
+          "type": "string",
+          "required": false
+        },
+        "reiwaOfficialResultUrl": {
+          "type": "url",
+          "required": false
+        }
+      }
+    },
+    {
+      "id": "s015",
+      "kind": "timeline-risk",
+      "durationSec": 110,
+      "title": "政治版スタートアップは成立するか",
+      "badges": [
+        {
+          "label": "構想・報道段階／一次情報待ち",
+          "status": "unverified"
+        }
+      ],
+      "onScreen": [
+        "2024.11：泉氏が新党構想で『ご準備ください』",
+        "2025.02：ひろゆき氏が『お手伝いします』",
+        "2025.05：出馬要請があれば応じる趣旨",
+        "2026.08：新党・政治団体構想との情報",
+        "論点：候補者審査／政策の統一／資金と責任"
+      ],
+      "visuals": [
+        {
+          "type": "timeline-and-startup-map",
+          "timelineYears": [
+            "2024",
+            "2025",
+            "2026"
+          ],
+          "nodes": [
+            "創業者",
+            "候補者",
+            "有権者"
+          ],
+          "logoPolicy": "do-not-invent-official-logo"
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "既成政党への新規参入として説明"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "個人の知名度と党内民主主義の緊張を指摘"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "候補者の品質保証へ話を戻す"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "創業者への信用で投票できるか問う"
+        }
+      ],
+      "humanCue": "政策が未完成でも、創業者二人への信用だけで投票できるか。",
+      "sourceLabel": "出典: 日刊スポーツ・スポニチ等（背景）／2026年構想は一次情報待ち",
+      "sources": [
+        {
+          "name": "日刊スポーツ",
+          "date": "2024-12-15",
+          "url": "https://www.nikkansports.com/general/nikkan/news/202412150000375.html",
+          "strength": "C"
+        },
+        {
+          "name": "日刊スポーツ",
+          "date": "2025-02-14",
+          "url": "https://www.nikkansports.com/general/nikkan/news/202502140000226.html",
+          "strength": "C"
+        },
+        {
+          "name": "スポニチ",
+          "date": "2025-05-23",
+          "url": "https://www.sponichi.co.jp/entertainment/news/2025/05/23/kiji/20250523s00041000210000c.html",
+          "strength": "C"
+        },
+        {
+          "name": "政治団体構想の2026年報道",
+          "date": "2026-08",
+          "url": null,
+          "strength": "D"
+        }
+      ],
+      "notes": [
+        "正式結党、届出、代表者、候補者募集を断定しない",
+        "仮称を正式名称のようにロゴ化しない"
+      ],
+      "updateBeforeRecording": true,
+      "dynamicTokens": {
+        "hiroizumiOfficialName": {
+          "type": "string",
+          "required": false
+        },
+        "hiroizumiOfficialUrl": {
+          "type": "url",
+          "required": false
+        },
+        "hiroizumiRegistrationStatus": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "id": "s016",
+      "kind": "contrast-two-cards",
+      "durationSec": 100,
+      "title": "過労の自己演出と、写真の切り取り",
+      "badges": [],
+      "onScreen": [
+        "『0〜3時間睡眠が常態化』本人投稿",
+        "計2,600万円相当を一時着用",
+        "当日限りの貸与",
+        "全点返却済み・贈与なし",
+        "文脈を切ると別の物語になる"
+      ],
+      "visuals": [
+        {
+          "type": "two-cards",
+          "left": {
+            "icon": "clock-and-documents",
+            "label": "睡眠0〜3時間"
+          },
+          "right": {
+            "icon": "jewelry-line-art",
+            "stamp": "貸与・返却済み"
+          }
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "睡眠不足と組織文化を扱う"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "ジュエリー報道の訂正を説明"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "政治家の演出とメディアの切り取りを比較"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "頑張っている姿を評価材料にするか問う"
+        }
+      ],
+      "humanCue": "政治家の『頑張っている姿』を、能力や政策の評価材料にどこまで含めるか。",
+      "sourceLabel": "出典: FNN (2026-07-04・22), RX Japan (2026-07-05)",
+      "sources": [
+        {
+          "name": "FNN",
+          "date": "2026-07-22",
+          "url": "https://www.fnn.jp/articles/-/1079832",
+          "strength": "B"
+        },
+        {
+          "name": "FNN",
+          "date": "2026-07-04",
+          "url": "https://www.fnn.jp/articles/-/1070196",
+          "strength": "B"
+        },
+        {
+          "name": "RX Japan",
+          "date": "2026-07-05",
+          "url": "https://prtimes.jp/main/html/rd/p/000002108.000026157.html",
+          "strength": "A"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s017",
+      "kind": "big-number-case",
+      "durationSec": 90,
+      "title": "権限を預ける組織の内部統制",
+      "badges": [],
+      "onScreen": [
+        "2026年上半期の懲戒処分：155人",
+        "異性関係43人／業務上の事案57人",
+        "捜査で訪れた90代女性宅へ侵入",
+        "現金約63万円などを盗んだ疑い",
+        "巡査長を懲戒免職"
+      ],
+      "visuals": [
+        {
+          "type": "big-number",
+          "value": "155人",
+          "caption": "全国警察職員の懲戒処分"
+        },
+        {
+          "type": "information-misuse-flow",
+          "from": "捜査で得た情報",
+          "to": "私的犯罪",
+          "direction": "reverse-trust"
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "強い権限ほど監督が必要と説明"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "顧客情報を犯罪に使う企業なら即死と比較"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "透明性と信頼回復策を問う"
+        }
+      ],
+      "humanCue": "警察の不祥事を減らすため、処分件数の公表以外にどんな透明性が必要か。",
+      "sourceLabel": "出典: 警察庁, FNN (2026-07-23・24)",
+      "sources": [
+        {
+          "name": "警察庁",
+          "url": "https://www.npa.go.jp/news/release/2026/20260709001.html",
+          "strength": "A"
+        },
+        {
+          "name": "FNN",
+          "date": "2026-07-23",
+          "url": "https://www.fnn.jp/articles/-/1080230",
+          "strength": "B"
+        },
+        {
+          "name": "FNN",
+          "date": "2026-07-24",
+          "url": "https://www.fnn.jp/articles/-/1081409",
+          "strength": "B"
+        }
+      ],
+      "notes": [
+        "被害者や犯行の具体像を笑いにしない"
+      ],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s018",
+      "kind": "law-boundary",
+      "durationSec": 90,
+      "title": "国旗損壊処罰法、境界線はどこか",
+      "badges": [
+        {
+          "label": "成立・公布済み",
+          "status": "verified"
+        }
+      ],
+      "onScreen": [
+        "7月17日成立／7月24日公布",
+        "公布から20日後に施行",
+        "2年以下の拘禁刑 または 20万円以下の罰金",
+        "実物の国旗として用いられる有体物：対象になり得る",
+        "お子様ランチ・アニメ・ゲーム・生成AI画像：対象外"
+      ],
+      "visuals": [
+        {
+          "type": "law-boundary",
+          "included": [
+            "国旗として用いられる有体物"
+          ],
+          "excluded": [
+            "お子様ランチの小旗",
+            "アニメ",
+            "ゲーム",
+            "生成AI画像"
+          ],
+          "axis": [
+            "国民感情の保護",
+            "表現の自由"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "成立済みの法律として制度を説明"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "刑罰の境界を社会通念に委ねる難しさを指摘"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "国旗保護と抗議表現の線引きを問う"
+        }
+      ],
+      "humanCue": "国旗を守ることと、抗議表現を刑罰で規制することの線引きをどう考えるか。",
+      "sourceLabel": "出典: 参議院（法律第69号）, 衆議院, テレビ朝日",
+      "sources": [
+        {
+          "name": "参議院",
+          "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221090221018.htm",
+          "strength": "A"
+        },
+        {
+          "name": "衆議院",
+          "url": "https://www.shugiin.go.jp/internet/itdb_rchome.nsf/html/rchome/Horitsu/naikakuABC0EE43620E161149258E22001BE545.htm",
+          "strength": "A"
+        },
+        {
+          "name": "テレビ朝日",
+          "date": "2026-07-17",
+          "url": "https://news.tv-asahi.co.jp/news_politics/articles/900195222.html",
+          "strength": "B"
+        }
+      ],
+      "notes": [
+        "法案・審議中とは言わない",
+        "お子様ランチの旗も犯罪とは言わない"
+      ],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s019",
+      "kind": "lawsuit-map",
+      "durationSec": 90,
+      "title": "関税は政策か、大統領権限の迂回路か",
+      "badges": [
+        {
+          "label": "係争中",
+          "status": "unverified"
+        }
+      ],
+      "onScreen": [
+        "原告：民主党系25州",
+        "対象：60の貿易相手",
+        "税率：10％／12.5％",
+        "法的根拠：通商法301条",
+        "違法性は未確定"
+      ],
+      "visuals": [
+        {
+          "type": "us-map-and-legal-flow",
+          "mapLabel": "25州",
+          "flow": [
+            "旧関税を司法が制限",
+            "別法で再構築",
+            "25州が提訴"
+          ]
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "america_ai",
+          "purpose": "関税を交渉手段として説明"
+        },
+        {
+          "speaker": "china_ai",
+          "purpose": "輸入税の負担が労働者・消費者へ回る点を指摘"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "法的不安定性が企業計画を壊すと応じる"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "産業保護と輸入物価上昇を比較"
+        }
+      ],
+      "humanCue": "関税で国内産業を守る利益と、輸入物価上昇のどちらを重く見るか。",
+      "sourceLabel": "出典: Reuters (2026-08-03)",
+      "sources": [
+        {
+          "name": "Reuters",
+          "date": "2026-08-03",
+          "url": "https://www.reuters.com/world/group-25-us-states-challenge-trumps-latest-tariffs-2026-08-03/",
+          "strength": "B"
+        }
+      ],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s020",
+      "kind": "summary",
+      "durationSec": 60,
+      "title": "ツケは消えず、別の場所へ移る",
+      "badges": [],
+      "onScreen": [
+        "戦争：輸送とエネルギーを通じて家計へ",
+        "円介入：相場を止めても金利・財政問題は残る",
+        "消費税：家計を助けても事業者・財政の負担は残る",
+        "次回：海峡／8月28日の介入公式額／消費税法案／れいわ／ひろゆき新党構想",
+        "あなたが一番払わされている『危機対応のツケ』は何ですか？"
+      ],
+      "visuals": [
+        {
+          "type": "summary-three-arrows",
+          "items": [
+            "戦争",
+            "円介入",
+            "消費税"
+          ],
+          "destination": "負担の移転"
+        }
+      ],
+      "speakerFlow": [
+        {
+          "speaker": "china_ai",
+          "purpose": "負担の公平性でまとめる"
+        },
+        {
+          "speaker": "america_ai",
+          "purpose": "持続可能性でまとめる"
+        },
+        {
+          "speaker": "human_cue",
+          "purpose": "結論と次回予告"
+        }
+      ],
+      "humanCue": "自分の結論を述べ、視聴者へ『どのツケを最も感じるか』と投げる。",
+      "sourceLabel": "各ページ参照",
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    }
+  ]
+}
