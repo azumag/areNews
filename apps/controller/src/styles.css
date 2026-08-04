@@ -490,3 +490,14 @@ button:disabled {
   display: flex;
   gap: 8px;
 }
+
+.repoEpisodeList {
+  display: grid;
+  gap: 8px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.repoEpisodeItem {
+  text-align: left;
+}

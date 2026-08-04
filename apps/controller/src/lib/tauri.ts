@@ -7,6 +7,7 @@ import type {
   SerializedError,
   Settings,
   SynthesizeLineResponse,
+  ValidatedScript,
   VoiceParams,
   VoicevoxSpeakerInfo
 } from "../types";
@@ -27,6 +28,10 @@ export async function openScriptFile(): Promise<string | null> {
 
 export async function loadScriptFile(path: string): Promise<LoadScriptResponse> {
   return invoke<LoadScriptResponse>("load_script", { path });
+}
+
+export async function validateScriptContent(content: string): Promise<ValidatedScript> {
+  return invoke<ValidatedScript>("validate_script_content", { content });
 }
 
 export async function checkVoicevox(baseUrl: string): Promise<CheckVoicevoxResponse> {

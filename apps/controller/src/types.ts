@@ -101,6 +101,11 @@ export type LoadScriptResponse = {
   path: string;
 };
 
+export type ValidatedScript = {
+  script: EpisodeScript;
+  scriptHash: string;
+};
+
 export type CheckVoicevoxResponse = {
   reachable: boolean;
   version?: string | null;

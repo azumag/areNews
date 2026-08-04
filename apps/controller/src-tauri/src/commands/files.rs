@@ -14,6 +14,13 @@ pub struct LoadScriptResponse {
     pub path: String,
 }
 
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ValidatedScript {
+    pub script: Value,
+    pub script_hash: String,
+}
+
 /// Opens a native "open file" dialog filtered to `.json`. Must be an async
 /// command: `blocking_pick_file()` blocks its calling thread until the
 /// dialog resolves, and tauri-plugin-dialog's own docs warn it must not run
@@ -52,5 +59,17 @@ pub fn load_script(path: String) -> Result<LoadScriptResponse, SerializedError> 
         script: loaded.script,
         script_hash: loaded.script_hash,
         path,
+    })
+}
+
+/// Same validation as `load_script`, but for content the frontend already
+/// has in memory (e.g. fetched from the repository over HTTPS) rather than
+/// a local file — no path, no disk read.
+#[tauri::command]
+pub fn validate_script_content(content: String) -> Result<ValidatedScript, SerializedError> {
+    let loaded = parse_and_validate(content.as_bytes())?;
+    Ok(ValidatedScript {
+        script: loaded.script,
+        script_hash: loaded.script_hash,
     })
 }

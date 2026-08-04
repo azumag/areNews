@@ -12,6 +12,7 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             files::open_script_file,
             files::load_script,
+            files::validate_script_content,
             voicevox::check_voicevox,
             voicevox::list_voicevox_speakers,
             voicevox::synthesize_line,
