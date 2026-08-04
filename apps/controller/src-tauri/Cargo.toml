@@ -1,3 +1,12 @@
+[workspace]
+members = ["core"]
+# `cargo test`/`cargo check` run from this directory with no `-p`/`--workspace`
+# flag default to just the core crate: it's the only member buildable without
+# the GTK/WebKit headers the shell package (this root package) needs on
+# Linux. Use `cargo test -p are-news-controller` (or `--workspace`) to
+# exercise the shell crate on a machine that has those headers.
+default-members = ["core"]
+
 [package]
 name = "are-news-controller"
 version = "0.1.0"
@@ -12,7 +21,8 @@ tauri-build = { version = "2", features = [] }
 
 [dependencies]
 tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-reqwest = { version = "0.12", features = ["json"] }
-base64 = "0.22"
+are-news-controller-core = { path = "core" }
+base64 = "0.23.0"

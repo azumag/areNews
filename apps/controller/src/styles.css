@@ -16,14 +16,22 @@ body {
 }
 
 button,
-.fileButton {
+.fileButton,
+select,
+input[type="text"],
+input[type="number"] {
   border: 1px solid #454b5e;
   border-radius: 10px;
   background: #202432;
   color: #f4f5f7;
   padding: 10px 14px;
-  cursor: pointer;
   font-weight: 700;
+  font-family: inherit;
+}
+
+button,
+.fileButton {
+  cursor: pointer;
 }
 
 button:hover,
@@ -40,19 +48,29 @@ button:disabled {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-bottom: 64px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 24px 32px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
 }
 
 .header h1 {
   margin: 0;
   font-size: 32px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .eyebrow,
@@ -74,13 +92,15 @@ button:disabled {
 
 .layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 280px 1fr 400px;
   gap: 20px;
-  padding: 20px 32px 72px;
+  padding: 20px 32px 24px;
+  align-items: start;
 }
 
 .slides,
-.stage {
+.stage,
+.lines-pane {
   background: rgba(16, 18, 25, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
@@ -89,7 +109,8 @@ button:disabled {
 }
 
 .slides h2,
-.stage h2 {
+.stage h2,
+.lines-pane h2 {
   margin-top: 0;
 }
 
@@ -102,14 +123,42 @@ button:disabled {
   align-items: center;
 }
 
-.slideButton span {
+.slideNumber {
   color: #aab0c0;
   font-variant-numeric: tabular-nums;
+}
+
+.slideTitle {
+  flex: 1;
 }
 
 .slideButton.active {
   border-color: #7aa2ff;
   background: #253153;
+}
+
+.slideStatusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #454b5e;
+  flex-shrink: 0;
+}
+
+.slideStatusDot-unread {
+  background: #454b5e;
+}
+
+.slideStatusDot-in_progress {
+  background: #d9b34d;
+}
+
+.slideStatusDot-done {
+  background: #4dd98f;
+}
+
+.slideStatusDot-skipped {
+  background: #7a8296;
 }
 
 .stageHeader {
@@ -120,17 +169,36 @@ button:disabled {
   margin-bottom: 16px;
 }
 
-.slideControls {
-  display: flex;
-  gap: 8px;
-}
-
-.visualNote {
+.visualNote,
+.visualMeta {
   margin: 0 0 16px;
   padding: 12px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.07);
   color: #d8dbea;
+}
+
+.slidesLink {
+  margin-top: 16px;
+}
+
+.slidesLinkRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.slidesLinkRow code {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  word-break: break-all;
+}
+
+.lines-pane {
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
 }
 
 .lines {
@@ -143,6 +211,12 @@ button:disabled {
   border-radius: 16px;
   background: #181b25;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.line.selected {
+  border-color: #7aa2ff;
+  box-shadow: 0 0 0 1px #7aa2ff inset;
 }
 
 .line-china_ai {
@@ -157,6 +231,11 @@ button:disabled {
   border-left: 6px solid #d9b34d;
 }
 
+.line-status-played,
+.line-status-skipped {
+  opacity: 0.6;
+}
+
 .lineTop {
   display: flex;
   justify-content: space-between;
@@ -168,7 +247,7 @@ button:disabled {
   font-weight: 900;
 }
 
-.speakerId,
+.lineStatusBadge,
 .line small,
 .humanCue {
   color: #aab0c0;
@@ -176,12 +255,16 @@ button:disabled {
 
 .line p {
   margin: 0 0 12px;
-  font-size: 20px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .lineActions {
   margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .statusBar {
@@ -191,9 +274,189 @@ button:disabled {
   bottom: 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
   padding: 12px 32px;
   background: #0a0c11;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: #d8dbea;
+  flex-wrap: wrap;
+}
+
+.statusBarControls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.playbackStatus {
+  font-weight: 700;
+}
+
+.playbackStatus-playing {
+  color: #4dd98f;
+}
+
+.playbackStatus-preparing {
+  color: #d9b34d;
+}
+
+.playbackStatus-error {
+  color: #e0605f;
+}
+
+.voicevoxStatus {
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.voicevoxStatus-ok {
+  color: #4dd98f;
+}
+
+.voicevoxStatus-error {
+  color: #e0605f;
+}
+
+.voicevoxStatus-pending {
+  color: #aab0c0;
+}
+
+.scriptErrorPanel {
+  margin: 0 32px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid #e0605f;
+  background: rgba(224, 96, 95, 0.12);
+}
+
+.scriptErrorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scriptErrorPath {
+  font-family: monospace;
+  color: #d8dbea;
+}
+
+.scriptErrorPanel ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.scriptErrorPanel code {
+  color: #ffb3b0;
+}
+
+.mergePrompt {
+  margin: 0 32px 16px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 1px solid #7aa2ff;
+  background: rgba(122, 162, 255, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mergePromptActions {
+  display: flex;
+  gap: 8px;
+}
+
+.toasts {
+  position: fixed;
+  right: 24px;
+  bottom: 72px;
+  display: grid;
+  gap: 10px;
+  z-index: 20;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #202432;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 260px;
+}
+
+.toast-warning {
+  border-color: #d9b34d;
+}
+
+.toast-error {
+  border-color: #e0605f;
+}
+
+.toast button {
+  border: none;
+  background: none;
+  padding: 0 4px;
+}
+
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 7, 10, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+
+.dialog {
+  width: min(560px, 92vw);
+  max-height: 86vh;
+  overflow-y: auto;
+  background: #161922;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 20px 24px 28px;
+}
+
+.dialogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialogBody {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field span {
+  color: #aab0c0;
+  font-size: 13px;
+}
+
+.fieldCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fieldNote {
+  font-size: 13px;
+  color: #aab0c0;
+}
+
+.fieldNote-warning {
+  color: #d9b34d;
 }
