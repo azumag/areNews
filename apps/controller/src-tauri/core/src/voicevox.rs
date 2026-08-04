@@ -1,3 +1,4 @@
+use reqwest::Response;
 use serde::Serialize;
 use serde_json::Value;
 
@@ -42,13 +43,12 @@ impl VoicevoxClient {
             .get(url)
             .send()
             .await
-            .map_err(|e| CoreError::VoicevoxConnect(e.to_string()))?
-            .error_for_status()
-            .map_err(|e| CoreError::VoicevoxResponse(e.to_string()))?;
+            .map_err(|e| CoreError::VoicevoxConnect(e.to_string()))?;
+        let resp = ensure_success("version", resp).await?;
         let text = resp
             .text()
             .await
-            .map_err(|e| CoreError::VoicevoxResponse(e.to_string()))?;
+            .map_err(|e| CoreError::VoicevoxResponse(format!("version: {e}")))?;
         // /version normally returns a bare JSON string, e.g. "0.14.0".
         let version: String = serde_json::from_str(&text).unwrap_or(text);
         Ok(version)
@@ -61,13 +61,12 @@ impl VoicevoxClient {
             .get(url)
             .send()
             .await
-            .map_err(|e| CoreError::VoicevoxConnect(e.to_string()))?
-            .error_for_status()
-            .map_err(|e| CoreError::VoicevoxResponse(e.to_string()))?;
+            .map_err(|e| CoreError::VoicevoxConnect(e.to_string()))?;
+        let resp = ensure_success("speakers", resp).await?;
         let raw: Value = resp
             .json()
             .await
-            .map_err(|e| CoreError::VoicevoxResponse(e.to_string()))?;
+            .map_err(|e| CoreError::VoicevoxResponse(format!("speakers: {e}")))?;
         parse_speakers(&raw)
     }
 
@@ -86,15 +85,15 @@ impl VoicevoxClient {
         let speaker = speaker_id.to_string();
 
         let query_url = format!("{}/audio_query", self.base_url);
-        let mut audio_query: Value = self
+        let query_resp = self
             .http
             .post(query_url)
             .query(&[("text", text), ("speaker", speaker.as_str())])
             .send()
             .await
-            .map_err(|e| CoreError::VoicevoxConnect(format!("audio_query: {e}")))?
-            .error_for_status()
-            .map_err(|e| CoreError::VoicevoxResponse(format!("audio_query: {e}")))?
+            .map_err(|e| CoreError::VoicevoxConnect(format!("audio_query: {e}")))?;
+        let query_resp = ensure_success("audio_query", query_resp).await?;
+        let mut audio_query: Value = query_resp
             .json()
             .await
             .map_err(|e| CoreError::VoicevoxResponse(format!("audio_queryの解析に失敗: {e}")))?;
@@ -102,21 +101,54 @@ impl VoicevoxClient {
         apply_params(&mut audio_query, params);
 
         let synth_url = format!("{}/synthesis", self.base_url);
-        let wav = self
+        let synth_resp = self
             .http
             .post(synth_url)
             .query(&[("speaker", speaker.as_str())])
             .json(&audio_query)
             .send()
             .await
-            .map_err(|e| CoreError::VoicevoxConnect(format!("synthesis: {e}")))?
-            .error_for_status()
-            .map_err(|e| CoreError::VoicevoxResponse(format!("synthesis: {e}")))?
+            .map_err(|e| CoreError::VoicevoxConnect(format!("synthesis: {e}")))?;
+        let synth_resp = ensure_success("synthesis", synth_resp).await?;
+        let wav = synth_resp
             .bytes()
             .await
             .map_err(|e| CoreError::VoicevoxResponse(format!("synthesisの取得に失敗: {e}")))?;
 
         Ok(wav.to_vec())
+    }
+}
+
+/// Turns a non-2xx response into a `CoreError` that includes the engine's
+/// own error body, not just the status code — VOICEVOX's FastAPI backend
+/// returns a JSON `{"detail": ...}` (or a plain-text message) explaining
+/// *why* a request was rejected, and that detail is the only way to
+/// diagnose e.g. a 500 from `/synthesis` without reproducing it locally.
+async fn ensure_success(context: &str, response: Response) -> Result<Response, CoreError> {
+    let status = response.status();
+    if status.is_success() {
+        return Ok(response);
+    }
+    let body = response.text().await.unwrap_or_default();
+    let body = body.trim();
+    if body.is_empty() {
+        Err(CoreError::VoicevoxResponse(format!(
+            "{context}: HTTPステータス {status}"
+        )))
+    } else {
+        Err(CoreError::VoicevoxResponse(format!(
+            "{context}: HTTPステータス {status} — {}",
+            truncate(body, 500)
+        )))
+    }
+}
+
+fn truncate(s: &str, max_chars: usize) -> String {
+    if s.chars().count() <= max_chars {
+        s.to_string()
+    } else {
+        let head: String = s.chars().take(max_chars).collect();
+        format!("{head}...")
     }
 }
 
@@ -271,6 +303,52 @@ mod tests {
         let err = client.synthesize(3, "hello", &params()).await.unwrap_err();
         match err {
             CoreError::VoicevoxResponse(_) => {}
+            other => panic!("expected VoicevoxResponse, got {other:?}"),
+        }
+    }
+
+    #[tokio::test]
+    async fn error_response_body_is_surfaced_in_the_message() {
+        let server = MockServer::start();
+        server.mock(|when, then| {
+            when.method(httpmock::Method::POST).path("/audio_query");
+            then.status(422)
+                .json_body(serde_json::json!({ "detail": "speaker not found" }));
+        });
+        let client = VoicevoxClient::new(server.base_url());
+        let err = client.synthesize(3, "hello", &params()).await.unwrap_err();
+        match err {
+            CoreError::VoicevoxResponse(message) => {
+                assert!(message.contains("422"), "message was: {message}");
+                assert!(message.contains("speaker not found"), "message was: {message}");
+            }
+            other => panic!("expected VoicevoxResponse, got {other:?}"),
+        }
+    }
+
+    #[tokio::test]
+    async fn synthesis_500_surfaces_engine_error_detail() {
+        let server = MockServer::start();
+        server.mock(|when, then| {
+            when.method(httpmock::Method::POST).path("/audio_query");
+            then.status(200).json_body(serde_json::json!({
+                "speedScale": 1.0,
+                "outputSamplingRate": 24000
+            }));
+        });
+        server.mock(|when, then| {
+            when.method(httpmock::Method::POST).path("/synthesis");
+            then.status(500)
+                .json_body(serde_json::json!({ "detail": "internal engine error" }));
+        });
+        let client = VoicevoxClient::new(server.base_url());
+        let err = client.synthesize(8, "hello", &params()).await.unwrap_err();
+        match err {
+            CoreError::VoicevoxResponse(message) => {
+                assert!(message.starts_with("synthesis:"), "message was: {message}");
+                assert!(message.contains("500"), "message was: {message}");
+                assert!(message.contains("internal engine error"), "message was: {message}");
+            }
             other => panic!("expected VoicevoxResponse, got {other:?}"),
         }
     }
