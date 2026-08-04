@@ -1,0 +1,19 @@
+{
+  "episodeId": "2026-08-04-pilot",
+  "status": "generated",
+  "provider": "google-slides",
+  "presentationId": "15PaM1knoNEYrNV_1Y3dCmYI818DSQRQvnh7FgVfKNg0",
+  "googleSlidesUrl": "https://docs.google.com/presentation/d/15PaM1knoNEYrNV_1Y3dCmYI818DSQRQvnh7FgVfKNg0/edit",
+  "driveFolderId": "1D84kBvXkFMDI4sWgTjkyooh2TqZfYj7W",
+  "driveFolderUrl": "https://drive.google.com/drive/folders/1D84kBvXkFMDI4sWgTjkyooh2TqZfYj7W",
+  "slideCount": 20,
+  "aspectRatio": "16:9",
+  "generatedAt": "2026-08-04T17:45:00+09:00",
+  "sourceFiles": [
+    "selection.md",
+    "sources.md",
+    "slides.md",
+    "slide-spec.json",
+    "script.json"
+  ]
+}
