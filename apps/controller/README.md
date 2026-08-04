@@ -35,12 +35,18 @@ VOICEVOXが未起動でもアプリは起動し、台本の閲覧・進行操作
 
 ## テスト
 
-Rustのコアロジック（台本検証・キャッシュキー生成・VOICEVOXクライアント）:
+Rustのコアロジック（台本検証・キャッシュキー生成・VOICEVOXクライアント）。GTK/WebKitの
+開発ヘッダーが無い環境（本体のTauriシェルクレートはビルドできない）でも、`core`は
+tauri非依存のプレーンなRustクレートなので単体でテストできます。
 
 ```bash
-cd apps/controller/src-tauri
+cd apps/controller/src-tauri/core
 cargo test
 ```
+
+（`src-tauri`のワークスペースルートから `cargo test -p are-news-controller-core`
+としても同じです。ワークスペースの `default-members` は変更していません — `tauri build`
+自体が `-p` 無しの `cargo build` に依存しており、それを変えると実ビルドが壊れるためです。）
 
 TypeScriptの純粋関数（次の未読台詞の判定・話者/パラメータ優先順位・進行状態マージ・
 再生ステートマシン・キーマップ）:

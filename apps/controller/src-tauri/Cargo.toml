@@ -1,11 +1,14 @@
 [workspace]
 members = ["core"]
-# `cargo test`/`cargo check` run from this directory with no `-p`/`--workspace`
-# flag default to just the core crate: it's the only member buildable without
-# the GTK/WebKit headers the shell package (this root package) needs on
-# Linux. Use `cargo test -p are-news-controller` (or `--workspace`) to
-# exercise the shell crate on a machine that has those headers.
-default-members = ["core"]
+# Deliberately no `default-members` override here: `tauri build`/`tauri dev`
+# invoke plain `cargo build` from this directory with no `-p` flag, relying
+# on Cargo's normal default of building the package in the current
+# directory (this root package, which depends on `tauri` — required for
+# features like `tauri/custom-protocol` to resolve). A `default-members`
+# override changing that default broke real Windows builds even though it
+# made local testing on this GTK-less machine more convenient — see the
+# core crate testing instructions in README.md for the actual workaround
+# (an explicit `-p`/`--manifest-path`, not a workspace-wide default change).
 
 [package]
 name = "are-news-controller"
