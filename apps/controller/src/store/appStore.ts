@@ -15,6 +15,7 @@ export const DEFAULT_SETTINGS: Settings = {
   voicevoxBaseUrl: "http://127.0.0.1:50021",
   defaultSpeakers: {},
   voice: {},
+  overrideScriptSpeakers: false,
   openLastScriptOnStartup: false,
   alwaysOnTop: false,
   lastOpenedScriptPath: null

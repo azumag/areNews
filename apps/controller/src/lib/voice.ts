@@ -1,7 +1,13 @@
 import type { AiSpeaker, EpisodeScript, ScriptLine, Settings, VoiceParams } from "../types";
 
 /** Speaker id priority: line-level override > episode's `voicevox.defaultSpeakers`
- * > app settings' per-character default. `human_cue` never has a speaker. */
+ * > app settings' per-character default. `human_cue` never has a speaker.
+ *
+ * If `settings.overrideScriptSpeakers` is on, this flips for any character
+ * the app has a configured default for: the app setting wins over both the
+ * line and the episode. A character the app hasn't configured still falls
+ * through to the normal script-first order — the override only replaces
+ * voices the streamer has deliberately chosen a substitute for. */
 export function resolveSpeakerId(
   script: EpisodeScript,
   line: ScriptLine,
@@ -9,9 +15,15 @@ export function resolveSpeakerId(
 ): number | null {
   if (line.speaker === "human_cue") return null;
 
+  const speaker = line.speaker as AiSpeaker;
+
+  if (settings.overrideScriptSpeakers) {
+    const forcedDefault = settings.defaultSpeakers[speaker];
+    if (typeof forcedDefault === "number") return forcedDefault;
+  }
+
   if (typeof line.voicevoxSpeakerId === "number") return line.voicevoxSpeakerId;
 
-  const speaker = line.speaker as AiSpeaker;
   const scriptDefault = script.voicevox?.defaultSpeakers?.[speaker];
   if (typeof scriptDefault === "number") return scriptDefault;
 

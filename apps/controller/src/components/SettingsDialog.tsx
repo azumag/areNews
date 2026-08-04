@@ -159,6 +159,17 @@ export default function SettingsDialog({ updater }: Props) {
             </label>
           ))}
 
+          <label className="fieldCheckbox">
+            <input
+              type="checkbox"
+              checked={settings.overrideScriptSpeakers}
+              onChange={(e) => persist({ ...settings, overrideScriptSpeakers: e.target.checked })}
+            />
+            <span>
+              上の既定話者を台本の指定より優先する（台本が話者を指定していても、ここで設定した声を使う）
+            </span>
+          </label>
+
           {VOICE_FIELD_LABELS.map(({ key, label, step, min }) => (
             <label className="field" key={key}>
               <span>{label}</span>

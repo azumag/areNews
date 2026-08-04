@@ -68,6 +68,12 @@ export type Settings = {
   voicevoxBaseUrl: string;
   defaultSpeakers: Partial<Record<AiSpeaker, number>>;
   voice: VoiceParams;
+  /** When true, a character's app-configured default speaker (if set) wins
+   * over that character's line-level `voicevoxSpeakerId` and the episode's
+   * `voicevox.defaultSpeakers` — the opposite of the normal script-first
+   * priority. Lets the streamer swap voices for a script they don't want
+   * to edit. Off by default to match the documented priority order. */
+  overrideScriptSpeakers: boolean;
   openLastScriptOnStartup: boolean;
   alwaysOnTop: boolean;
   lastOpenedScriptPath: string | null;

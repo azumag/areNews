@@ -8,6 +8,7 @@ function buildSettings(overrides: Partial<Settings> = {}): Settings {
     voicevoxBaseUrl: "http://127.0.0.1:50021",
     defaultSpeakers: { china_ai: 100, america_ai: 200 },
     voice: { speedScale: 1.0, pitchScale: 0.0, intonationScale: 1.0, volumeScale: 1.0 },
+    overrideScriptSpeakers: false,
     openLastScriptOnStartup: false,
     alwaysOnTop: false,
     lastOpenedScriptPath: null,
@@ -46,6 +47,36 @@ describe("resolveSpeakerId", () => {
     script.voicevox = undefined;
     const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t" };
     expect(resolveSpeakerId(script, line, buildSettings({ defaultSpeakers: {} }))).toBeNull();
+  });
+
+  describe("overrideScriptSpeakers", () => {
+    it("makes the app default win over a line-level voicevoxSpeakerId", () => {
+      const script = buildScript();
+      const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t", voicevoxSpeakerId: 42 };
+      const settings = buildSettings({ overrideScriptSpeakers: true });
+      expect(resolveSpeakerId(script, line, settings)).toBe(100);
+    });
+
+    it("makes the app default win over the episode's voicevox.defaultSpeakers", () => {
+      const script = buildScript();
+      const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t" };
+      const settings = buildSettings({ overrideScriptSpeakers: true });
+      expect(resolveSpeakerId(script, line, settings)).toBe(100);
+    });
+
+    it("falls through to the script's value for a character the app hasn't configured", () => {
+      const script = buildScript();
+      const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t", voicevoxSpeakerId: 42 };
+      const settings = buildSettings({ overrideScriptSpeakers: true, defaultSpeakers: {} });
+      expect(resolveSpeakerId(script, line, settings)).toBe(42);
+    });
+
+    it("does nothing when off, even with an app default configured", () => {
+      const script = buildScript();
+      const line: ScriptLine = { id: "x", speaker: "china_ai", text: "t", voicevoxSpeakerId: 42 };
+      const settings = buildSettings({ overrideScriptSpeakers: false });
+      expect(resolveSpeakerId(script, line, settings)).toBe(42);
+    });
   });
 });
 
