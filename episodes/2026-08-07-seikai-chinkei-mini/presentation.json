@@ -1,7 +1,8 @@
 {
   "episodeId": "2026-08-07-seikai-chinkei-mini",
   "title": "政界珍景ミニ 2026-08-07｜誰が線を引くのか",
-  "status": "generated",
+  "status": "generated-layout-v2",
+  "layoutVersion": "v2-clean-broadcast",
   "repository": "azumag/areNews",
   "sourceFiles": [
     "selection.md",
@@ -11,9 +12,20 @@
     "script.json"
   ],
   "googleSlides": {
-    "url": "https://docs.google.com/presentation/d/1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU/edit",
-    "presentationId": "1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU",
+    "url": "https://docs.google.com/presentation/d/1w57VDz7ZPuyJtHn0J1Yf0fH9htzP6YTC79FjusT3cQ8/edit",
+    "presentationId": "1w57VDz7ZPuyJtHn0J1Yf0fH9htzP6YTC79FjusT3cQ8",
+    "oldPresentationId": "1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU",
     "slideCount": 8,
     "driveFolderUrl": "https://drive.google.com/drive/folders/10PN9IGsRRSN3GbQAuh9ZEI_lbTmAuFFY"
+  },
+  "layoutFix": {
+    "reason": "初版は細かいカード分割と小さい本文が多く、配信画面で見づらかったため。",
+    "changes": [
+      "1枚1メッセージへ整理",
+      "カード数削減",
+      "余白拡大",
+      "大見出し・大数字・問い中心の構成",
+      "本文は原則18pt以上"
+    ]
   }
 }
