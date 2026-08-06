@@ -12,9 +12,10 @@
     "script.json"
   ],
   "googleSlides": {
-    "url": "https://docs.google.com/presentation/d/1w57VDz7ZPuyJtHn0J1Yf0fH9htzP6YTC79FjusT3cQ8/edit",
-    "presentationId": "1w57VDz7ZPuyJtHn0J1Yf0fH9htzP6YTC79FjusT3cQ8",
-    "oldPresentationId": "1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU",
+    "url": "https://docs.google.com/presentation/d/1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU/edit",
+    "presentationId": "1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU",
+    "layoutV2SourceUrl": "https://docs.google.com/presentation/d/1w57VDz7ZPuyJtHn0J1Yf0fH9htzP6YTC79FjusT3cQ8/edit",
+    "layoutV2SourcePresentationId": "1w57VDz7ZPuyJtHn0J1Yf0fH9htzP6YTC79FjusT3cQ8",
     "slideCount": 8,
     "driveFolderUrl": "https://drive.google.com/drive/folders/10PN9IGsRRSN3GbQAuh9ZEI_lbTmAuFFY"
   },
@@ -25,7 +26,8 @@
       "カード数削減",
       "余白拡大",
       "大見出し・大数字・問い中心の構成",
-      "本文は原則18pt以上"
+      "本文は原則18pt以上",
+      "Tauriが参照する既存Google Slides URLにもv2レイアウトを反映"
     ]
   }
 }
