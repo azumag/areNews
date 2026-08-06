@@ -1,0 +1,108 @@
+{
+  "$schema": "../../schemas/slide-spec.schema.json",
+  "schemaVersion": "1.0",
+  "episodeId": "2026-08-07-seikai-chinkei-mini",
+  "title": "政界珍景ミニ：誰が線を引くのか",
+  "date": "2026-08-07",
+  "status": "generated",
+  "slideCount": 8,
+  "estimatedDurationSec": 720,
+  "presentation": {
+    "googleSlidesUrl": "https://docs.google.com/presentation/d/1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU/edit",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/10PN9IGsRRSN3GbQAuh9ZEI_lbTmAuFFY"
+  },
+  "theme": {
+    "name": "dark-newsroom-mini",
+    "aspectRatio": "16:9",
+    "fonts": { "primary": "Noto Sans JP", "fallback": ["Arial", "sans-serif"] },
+    "colors": {
+      "background": "#11151B",
+      "text": "#F4F6F8",
+      "subText": "#9AA4B2",
+      "chinaAi": "#E44D5E",
+      "americaAi": "#4B8BFF",
+      "human": "#F2C94C",
+      "verified": "#38B27A",
+      "reported": "#B58CFF",
+      "special": "#38B27A",
+      "caution": "#FF8A4C"
+    }
+  },
+  "contentRules": {
+    "sectionName": "政界珍景",
+    "majorNewsIncluded": false,
+    "excludedTopics": ["山本太郎氏引退", "国旗損壊処罰法", "警察空き巣", "国民会議", "首相ジュエリー"],
+    "avoidRepeatedCaveatsInScript": true,
+    "sourceTruth": "sources.md"
+  },
+  "slides": [
+    {
+      "id": "s001",
+      "kind": "title",
+      "title": "誰が線を引くのか",
+      "onScreen": ["政治の珍景3本＋特別トピック1本", "まとも／原因／協力的／風刺", "誰が決め、誰が従い、誰が消すのか"],
+      "speakerFlow": ["china_ai", "america_ai", "china_ai", "america_ai", "human_cue"],
+      "sources": []
+    },
+    {
+      "id": "s002",
+      "kind": "agenda",
+      "title": "本日の政界珍景 3景＋特別1本",
+      "onScreen": ["ひろゆき＆いずみ新党", "高市首相と支持率", "財務省の異例転出", "油粘土マン動画削除"],
+      "speakerFlow": ["america_ai", "china_ai", "human_cue"],
+      "sources": []
+    },
+    {
+      "id": "s003",
+      "kind": "political-startup",
+      "title": "ひろゆき＆いずみ新党（仮）",
+      "badges": ["政治団体", "候補者公募", "地域政党"],
+      "onScreen": ["泉房穂参院議員とひろゆき氏", "2027年統一地方選", "正式名称は公募予定", "候補者審査・政策統一・責任"],
+      "speakerFlow": ["america_ai", "china_ai", "america_ai", "china_ai", "human_cue"],
+      "sources": ["https://www.qab.co.jp/quebee/video/000522916/", "https://www.nikkansports.com/general/nikkan/news/202502140000226.html"]
+    },
+    {
+      "id": "s004",
+      "kind": "survey-response",
+      "title": "支持率下落、首相『原因は分からない』",
+      "badges": ["世論調査", "国会答弁"],
+      "onScreen": ["支持率49.2％ 前月比-10.9pt", "不支持34.8％ 前月比+11.8pt", "原因分析は困難、政策設問は参考", "働いた量と支持の理由は別"],
+      "speakerFlow": ["china_ai", "america_ai", "china_ai", "america_ai", "human_cue"],
+      "sources": ["https://news.tv-asahi.co.jp/news_politics/articles/000522000.html", "https://news.tv-asahi.co.jp/news_politics/articles/900195465.html"]
+    },
+    {
+      "id": "s005",
+      "kind": "bureaucracy-personnel",
+      "title": "財務省エース、異例転出へ？",
+      "badges": ["朝日新聞報道", "官僚人事", "政策異論"],
+      "onScreen": ["幹部官僚の東京税関長転出見通し", "官邸幹部『協力的でなかったから』", "政権への協力と専門的異論の境界"],
+      "speakerFlow": ["america_ai", "china_ai", "america_ai", "china_ai", "human_cue"],
+      "sources": ["https://www.asahi.com/articles/ASV862J27V86ULFA01MM.html?ref=tw_asahi", "https://www.mof.go.jp/public_relations/whats_new/2026others.html"]
+    },
+    {
+      "id": "s006",
+      "kind": "special-topic",
+      "title": "特別：陰謀論風刺の動画が消えるとき",
+      "badges": ["ネット文化", "風刺", "コンテキスト崩壊"],
+      "onScreen": ["油粘土マン氏の短尺動画", "2024年12月公開の記録", "陰謀論を笑う風刺", "ワクチンか、再配布か"],
+      "speakerFlow": ["china_ai", "america_ai", "china_ai", "america_ai", "china_ai", "human_cue"],
+      "sources": ["https://yutura.net/channel/40526/video/fHEJ8afBzBE/", "https://yutura.net/channel/40526/", "https://typing-tube.net/movie/show/69816"]
+    },
+    {
+      "id": "s007",
+      "kind": "synthesis",
+      "title": "共通テーマ：誰が線を引くのか",
+      "onScreen": ["まとも", "原因", "協力的", "削除"],
+      "speakerFlow": ["america_ai", "china_ai", "america_ai", "human_cue"],
+      "sources": []
+    },
+    {
+      "id": "s008",
+      "kind": "closing",
+      "title": "今日の問い",
+      "onScreen": ["この線を引く人は、説明責任も引き受けているのか？", "次回まで追う項目"],
+      "speakerFlow": ["china_ai", "america_ai", "human_cue"],
+      "sources": []
+    }
+  ]
+}
