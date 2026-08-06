@@ -22,8 +22,8 @@ Google Slides は配信用の生成物として扱う。
 ## Slides
 
 - タイトル: 政界珍景ミニ 2026-08-07｜誰が線を引くのか
-- URL: https://docs.google.com/presentation/d/1w57VDz7ZPuyJtHn0J1Yf0fH9htzP6YTC79FjusT3cQ8/edit
-- 旧レイアウトURL: https://docs.google.com/presentation/d/1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU/edit
+- URL: https://docs.google.com/presentation/d/1X4-YRtLhvC2Ycv0HbWvfEEFaIPTfOq2UEGUQ-Fq3GmU/edit
+- レイアウトv2生成元: https://docs.google.com/presentation/d/1w57VDz7ZPuyJtHn0J1Yf0fH9htzP6YTC79FjusT3cQ8/edit
 - Driveフォルダ: https://drive.google.com/drive/folders/10PN9IGsRRSN3GbQAuh9ZEI_lbTmAuFFY
 - 枚数: 8
 
@@ -41,3 +41,7 @@ Google Slides は配信用の生成物として扱う。
 
 - PPTX: `seikai_chinkei_mini_2026-08-07_layout-v2.pptx`
 - Montage: `seikai_chinkei_montage_v2.png`
+
+## 実装メモ
+
+Tauriアプリの `script.json` は既存のGoogle Slides URLを参照しているため、同じURLのデッキへv2レイアウトを反映済み。
