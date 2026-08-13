@@ -1,0 +1,428 @@
+{
+  "$schema": "../../schemas/slide-spec.schema.json",
+  "schemaVersion": "1.0",
+  "episodeId": "2026-08-14-national-intelligence-palantir",
+  "title": "国家の目は誰が見張るのか",
+  "subtitle": "国家情報局・パランティア・AI情報主権",
+  "date": "2026-08-14",
+  "status": "generated",
+  "estimatedDurationSec": 1975,
+  "slideCount": 19,
+  "theme": {
+    "name": "dark-newsroom-feature-v3",
+    "aspectRatio": "16:9",
+    "canvas": {
+      "width": 1920,
+      "height": 1080
+    },
+    "fonts": {
+      "primary": "Noto Sans JP",
+      "fallback": ["Arial", "sans-serif"],
+      "minimumBodyPt": 18,
+      "preferredTitlePt": 34
+    },
+    "colors": {
+      "background": "#0E131A",
+      "surface": "#1C2634",
+      "text": "#F7F8FA",
+      "subText": "#A9B1BC",
+      "accent": "#F4C542",
+      "verified": "#38B27A",
+      "reported": "#B58CFF",
+      "caution": "#FF934F",
+      "danger": "#F04F64",
+      "blue": "#4B8BFF"
+    },
+    "safeAreas": {
+      "left": 72,
+      "right": 72,
+      "top": 52,
+      "bottom": 52
+    }
+  },
+  "generation": {
+    "format": "pptx-imported-to-google-slides",
+    "layoutVersion": "v3-feature-broadcast",
+    "googleSlidesUrl": "https://docs.google.com/presentation/d/1ADa7A2YC1wgDTZmP7jygqO_StRPjxk568_D5GcJ18x0/edit",
+    "renderedSlideCount": 19,
+    "overflowTest": "passed"
+  },
+  "contentRules": {
+    "sectionName": "政界珍景",
+    "aiRole": "title-and-summary-only",
+    "detailSpeaker": "azumag",
+    "oneSlideOnePoint": true,
+    "avoidDenseCardGrid": true,
+    "victimsAreNotPunchlines": true,
+    "sourceTruth": "sources.md",
+    "finalSlideIsBreakingNews": true,
+    "noSlideAfterFinalBreakingNews": true
+  },
+  "slides": [
+    {
+      "id": "s001",
+      "kind": "title",
+      "durationSec": 45,
+      "title": "国家の目は誰が見張るのか",
+      "subtitle": "国家情報局・パランティア・AI情報主権",
+      "badges": [],
+      "onScreen": ["情報：集約と監督", "一票：本人の意思", "医療費：月と年の上限", "領土：実効支配", "本人から見えない場所で、誰が決めるのか"],
+      "visuals": [{"type": "four-topic-cards", "layout": "large-title-bottom-cards"}],
+      "speakerFlow": [
+        {"speaker": "china_ai", "purpose": "番組タイトルを読む"},
+        {"speaker": "america_ai", "purpose": "番組構成を読む"},
+        {"speaker": "human_cue", "purpose": "共通テーマを説明する"}
+      ],
+      "humanCue": "情報、一票、医療費、領土を、見えない場所で誰が決めるかという共通軸で導入する。",
+      "sourceLabel": "",
+      "sources": [],
+      "notes": ["AIはタイトルと構成だけを読む"],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s002",
+      "kind": "agenda",
+      "durationSec": 45,
+      "title": "本日の4本",
+      "badges": [],
+      "onScreen": ["国家情報局、その『目』は誰のものか", "本人が投票所へ行って初めて発覚", "月の天井を上げ、年の天井をつくる", "プーチン氏、択捉島を初訪問"],
+      "visuals": [{"type": "four-row-lineup", "layout": "vertical-list"}],
+      "speakerFlow": [
+        {"speaker": "america_ai", "purpose": "特集と政界珍景の見出しを読む"},
+        {"speaker": "china_ai", "purpose": "最後の速報を読む"},
+        {"speaker": "human_cue", "purpose": "特集の見方を案内する"}
+      ],
+      "humanCue": "制度、技術、契約、監督を分けて見ると案内する。",
+      "sourceLabel": "",
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s003",
+      "kind": "feature-title",
+      "durationSec": 75,
+      "title": "国家情報局、その『目』は誰のものか",
+      "subtitle": "パランティアと日本のAI・情報主権",
+      "badges": [
+        {"label": "特集", "status": "verified"},
+        {"label": "2026年7月31日発足", "status": "verified"},
+        {"label": "直接契約は未確認", "status": "unverified"}
+      ],
+      "onScreen": ["国家情報局：行政情報の集約・総合整理・分析", "Palantir：防衛分野で利用報道・AIデータ分析基盤", "政府内の情報集約と海外製分析基盤を混同しない"],
+      "visuals": [{"type": "two-entity-comparison", "layout": "two-column-dotted-connection"}],
+      "speakerFlow": [
+        {"speaker": "china_ai", "purpose": "特集タイトルを読む"},
+        {"speaker": "america_ai", "purpose": "国家情報局発足と自衛隊での利用報道を紹介する"},
+        {"speaker": "human_cue", "purpose": "確認済みと未確認を分ける"}
+      ],
+      "humanCue": "国家情報局とPalantirを直結させず、防衛省・自衛隊との接点から説明する。",
+      "sourceLabel": "参議院／FNN／朝日新聞／防衛省",
+      "sources": [
+        {"name": "参議院 国家情報会議設置法案", "date": "2026-06-03", "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221024.htm", "strength": "A"},
+        {"name": "防衛省 小泉防衛相のPalantir訪問", "date": "2026-01-16", "url": "https://www.mod.go.jp/en/article/2026/01/3eee3a5675cfbb9312ca9962baf1f5dc7547e1da.html", "strength": "A"},
+        {"name": "朝日新聞 自衛隊の日米訓練にパランティアAI", "date": "2026-06", "url": "https://www.asahi.com/articles/ASV6B3T07V6BULZU00DM.html", "strength": "B"}
+      ],
+      "notes": ["国家情報局との直接契約は未確認"],
+      "updateBeforeRecording": true
+    },
+    {
+      "id": "s004",
+      "kind": "timeline",
+      "durationSec": 100,
+      "title": "国家情報局は何が変わった？",
+      "subtitle": "各機関を残したまま、官邸の司令塔を強くする",
+      "badges": [{"label": "法律第28号", "status": "verified"}],
+      "onScreen": ["5月27日 法案成立", "6月3日 公布", "7月31日 発足", "巨大組織へ全吸収ではない", "既存機関を残し官邸の司令塔を強化"],
+      "visuals": [{"type": "timeline", "layout": "three-dates-plus-comparison"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "成立から発足までと組織の性格を説明する"}],
+      "humanCue": "日本版CIAが丸ごと誕生したのではなく、調整・統合の中枢を強化したと説明する。",
+      "sourceLabel": "参議院／FNN／KAB",
+      "sources": [
+        {"name": "参議院 国家情報会議設置法案", "date": "2026-06-03", "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221024.htm", "strength": "A"},
+        {"name": "FNN 国家情報局31日設置へ", "date": "2026-07", "url": "https://www.fnn.jp/articles/FNN/1081001", "strength": "B"}
+      ],
+      "notes": ["既存機関の全吸収ではない"],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s005",
+      "kind": "flow-diagram",
+      "durationSec": 100,
+      "title": "情報はどこから、どこへ流れる？",
+      "badges": [{"label": "法律上の情報提供", "status": "verified"}],
+      "onScreen": ["行政機関 → 国家情報局・国家情報会議 → 首相・関係閣僚", "速くなる：省庁横断で関係が見える", "広がる：誤情報も政府全体へ波及する"],
+      "visuals": [{"type": "three-layer-flow", "layout": "top-to-bottom"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "情報経路と統合の利点・危険を説明する"}],
+      "humanCue": "情報の出所、確度、検索履歴、訂正履歴が重要になると説明する。",
+      "sourceLabel": "参議院",
+      "sources": [{"name": "参議院 国家情報会議設置法案", "date": "2026-06-03", "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221024.htm", "strength": "A"}],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s006",
+      "kind": "scope",
+      "durationSec": 100,
+      "title": "対象は『安全保障』だけではない",
+      "badges": [{"label": "法律の所掌事務", "status": "verified"}],
+      "onScreen": ["重要情報活動の企画・総合調整", "外国情報活動への対処", "特定秘密の保護", "内閣の重要政策に関する情報収集・調査", "提供情報の総合整理", "何を重要とするか、誰が決める？"],
+      "visuals": [{"type": "numbered-scope-list", "layout": "five-items"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "所掌の広さと境界の必要性を説明する"}],
+      "humanCue": "対象、目的、保存期間の境界を明示する必要があると述べる。",
+      "sourceLabel": "参議院",
+      "sources": [{"name": "参議院 国家情報会議設置法案", "date": "2026-06-03", "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221024.htm", "strength": "A"}],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s007",
+      "kind": "powers-versus-capability",
+      "durationSec": 100,
+      "title": "新しい逮捕権・盗聴権が生えたわけではない",
+      "badges": [{"label": "設置法の範囲", "status": "verified"}],
+      "onScreen": ["強制捜査権：今回の設置法で新設を確認できない", "データ分析能力：横断検索・結合で把握範囲は拡大"],
+      "visuals": [{"type": "two-column-comparison", "layout": "coercive-powers-vs-analysis"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "権限名と分析能力を分ける"}],
+      "humanCue": "逮捕・捜索・通信傍受の新設ではなく、既存情報の統合能力が論点だと説明する。",
+      "sourceLabel": "参議院",
+      "sources": [
+        {"name": "参議院 国家情報会議設置法案", "date": "2026-06-03", "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221024.htm", "strength": "A"},
+        {"name": "参議院 連合審査会質疑項目", "date": "2026-05-21", "url": "https://www.sangiin.go.jp/japanese/kaigijoho/shitsugi/221/s063_0521_01.html", "strength": "A"}
+      ],
+      "notes": ["新しい盗聴権ができたと言い切らない"],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s008",
+      "kind": "oversight",
+      "durationSec": 110,
+      "title": "強い情報機関に、強い監督はあるか",
+      "badges": [{"label": "国会で争点", "status": "verified"}],
+      "onScreen": ["秘密情報の内容をすべて公開することはできない", "活動件数と法的根拠", "目的外利用", "検索・結合の履歴", "違反と是正", "誤情報の修正"],
+      "visuals": [{"type": "closed-secret-open-oversight", "layout": "two-box-arrow"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "秘密と外部監査を両立できると説明する"}],
+      "humanCue": "独立した常設監督と訂正制度の必要性を説明する。",
+      "sourceLabel": "参議院",
+      "sources": [{"name": "参議院 連合審査会質疑項目", "date": "2026-05-21", "url": "https://www.sangiin.go.jp/japanese/kaigijoho/shitsugi/221/s063_0521_01.html", "strength": "A"}],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s009",
+      "kind": "evidence-ladder",
+      "durationSec": 110,
+      "title": "パランティア――確認できた接点",
+      "subtitle": "国家情報局ではなく、まず防衛省・自衛隊の事例",
+      "badges": [
+        {"label": "防衛相訪問", "status": "verified"},
+        {"label": "演習利用・契約額は報道", "status": "estimate"},
+        {"label": "国家情報局との契約は未確認", "status": "unverified"}
+      ],
+      "onScreen": ["1月16日 小泉防衛相がPalantirを訪問", "日米共同演習でAI・データ分析基盤を使用と報道", "契約額約2.8億円／Gothamと報道", "国家情報局とPalantirの直接契約は未確認"],
+      "visuals": [{"type": "evidence-ladder", "layout": "four-horizontal-levels"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "公式確認、報道、未確認を区別する"}],
+      "humanCue": "Palantirとの接点を防衛省・自衛隊の範囲から説明する。",
+      "sourceLabel": "防衛省／朝日新聞／統合幕僚監部",
+      "sources": [
+        {"name": "防衛省 小泉防衛相のPalantir訪問", "date": "2026-01-16", "url": "https://www.mod.go.jp/en/article/2026/01/3eee3a5675cfbb9312ca9962baf1f5dc7547e1da.html", "strength": "A"},
+        {"name": "朝日新聞 自衛隊の日米訓練にパランティアAI", "date": "2026-06", "url": "https://www.asahi.com/articles/ASV6B3T07V6BULZU00DM.html", "strength": "B"},
+        {"name": "統合幕僚監部 日米共同統合演習", "date": "2026-02-13", "url": "https://www.mod.go.jp/js/about/message/2026/0213.html", "strength": "A"}
+      ],
+      "notes": ["朝日新聞報道であることを明示する"],
+      "updateBeforeRecording": true
+    },
+    {
+      "id": "s010",
+      "kind": "three-level-risk",
+      "durationSec": 120,
+      "title": "『情報を渡す』を3段階に分ける",
+      "badges": [
+        {"label": "行政内共有は確認済み", "status": "verified"},
+        {"label": "製品内処理は詳細不明", "status": "estimate"},
+        {"label": "国外移転は未確認", "status": "unverified"}
+      ],
+      "onScreen": ["行政機関 → 国家情報局・国家情報会議", "日本側データ → Palantir製品内で処理", "Palantir社・米国政府へデータ移転", "製品を使うこと＝外国政府へ全データを渡すこと、ではない"],
+      "visuals": [{"type": "three-horizontal-levels", "layout": "verified-reported-unverified"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "三段階を分離して説明する"}],
+      "humanCue": "実際のリスクを決めるのはクラウド、閉鎖網、鍵、保守アクセス、契約だと説明する。",
+      "sourceLabel": "参議院／朝日新聞",
+      "sources": [
+        {"name": "参議院 国家情報会議設置法案", "date": "2026-06-03", "url": "https://www.sangiin.go.jp/japanese/joho1/kousei/gian/221/meisai/m221080221024.htm", "strength": "A"},
+        {"name": "朝日新聞 自衛隊の日米訓練にパランティアAI", "date": "2026-06", "url": "https://www.asahi.com/articles/ASV6B3T07V6BULZU00DM.html", "strength": "B"}
+      ],
+      "notes": ["国外移転を断定しない"],
+      "updateBeforeRecording": true
+    },
+    {
+      "id": "s011",
+      "kind": "checklist",
+      "durationSec": 130,
+      "title": "契約で確認すべき10項目",
+      "badges": [{"label": "契約・構成の確認項目", "status": "verified"}],
+      "onScreen": ["データ保存場所", "クラウド／閉鎖網／オフライン", "暗号鍵の管理主体", "ベンダー技術者のアクセス", "保守アクセスの承認と記録", "AI学習・製品改善への再利用", "米軍・他システムとの接続", "監査ログと外部監査", "契約終了時の完全削除", "他製品へ移行できる形式"],
+      "visuals": [{"type": "ten-item-checklist", "layout": "two-columns"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "情報主権を左右する契約条件を説明する"}],
+      "humanCue": "データ、鍵、アクセスとログ、退出の四つを判断軸としてまとめる。",
+      "sourceLabel": "Palantir公式",
+      "sources": [{"name": "Palantir Foundry監査ログ概要", "date": "", "url": "https://www.palantir.com/docs/jp/foundry/security/audit-logs-overview", "strength": "A"}],
+      "notes": ["製品機能と日本政府の契約条件を混同しない"],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s012",
+      "kind": "layered-sovereignty",
+      "durationSec": 120,
+      "title": "AI主権は『国産モデル』だけでは決まらない",
+      "badges": [{"label": "分析枠組み", "status": "verified"}],
+      "onScreen": ["データ", "計算資源・クラウド", "統合基盤", "AIモデル", "運用・退出"],
+      "visuals": [{"type": "five-layer-staircase", "layout": "bottom-data-top-exit"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "AI主権の5層を説明する"}],
+      "humanCue": "判断軸はどこの会社かだけでなく、誰が止め、調べ、乗り換えられるかだと述べる。",
+      "sourceLabel": "番組内分析",
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s013",
+      "kind": "feature-summary",
+      "durationSec": 120,
+      "title": "見る力と、見張る力",
+      "badges": [{"label": "特集まとめ", "status": "verified"}],
+      "onScreen": ["期待：情報共有・迅速分析・サイバー／テロ対応・外国情報活動への対処", "必要：対象と目的・検索記録・独立監督・契約監査・誤情報の訂正", "国家の見る力が強くなるほど、国家を見張る力も強くする"],
+      "visuals": [{"type": "expectation-versus-requirement", "layout": "two-columns-plus-conclusion"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "特集をまとめる"}],
+      "humanCue": "能力と監督を同時に設計するべきだと結論づける。",
+      "sourceLabel": "参議院／Palantir公式",
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s014",
+      "kind": "section",
+      "durationSec": 30,
+      "title": "ここから政界珍景",
+      "badges": [],
+      "onScreen": ["本人が投票所へ行って初めて発覚", "月の天井を上げ、年の天井をつくる", "笑う対象は被害者ではなく、制度と管理の奇妙さ"],
+      "visuals": [{"type": "section-title", "layout": "large-title-two-rows"}],
+      "speakerFlow": [
+        {"speaker": "china_ai", "purpose": "1本目の見出しを読む"},
+        {"speaker": "america_ai", "purpose": "2本目の見出しを読む"},
+        {"speaker": "human_cue", "purpose": "コーナーの焦点を説明する"}
+      ],
+      "humanCue": "被害者や患者ではなく制度と管理の奇妙さを扱うと導入する。",
+      "sourceLabel": "",
+      "sources": [],
+      "notes": [],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s015",
+      "kind": "voting-case",
+      "durationSec": 170,
+      "title": "本人が投票所へ行って初めて発覚",
+      "subtitle": "老人ホーム入所者35人分の不在者投票偽造",
+      "badges": [
+        {"label": "2025年7月参院選", "status": "verified"},
+        {"label": "2026年2月有罪判決報道", "status": "estimate"}
+      ],
+      "onScreen": ["2025年7月 参院選", "2025年10月 3人を書類送検", "2026年2月 主導役に有罪判決報道", "35人分を本人に無断で不在者投票", "本人が投票所へ行き『すでに投票済み』", "候補者本人・政党側の指示や関与は確認されていない"],
+      "visuals": [{"type": "timeline-plus-case-cards", "layout": "left-timeline-right-facts"}],
+      "speakerFlow": [
+        {"speaker": "china_ai", "purpose": "見出しを読む"},
+        {"speaker": "america_ai", "purpose": "事件概要を読む"},
+        {"speaker": "human_cue", "purpose": "制度上の権限集中と対策を説明する"}
+      ],
+      "humanCue": "指定施設の制度、発覚経緯、候補者側関与は未確認である点、外部監査策を説明する。",
+      "sourceLabel": "テレビ朝日／TBS／共同通信配信／北区選管",
+      "sources": [
+        {"name": "テレビ朝日 元社員ら3人を書類送検", "date": "2025-10-18", "url": "https://news.tv-asahi.co.jp/news_society/articles/000460573.html", "strength": "B"},
+        {"name": "北区 指定施設での不在者投票", "date": "", "url": "https://www.city.kita.lg.jp/city-information/election/1014741/1014743/1014752.html", "strength": "A"}
+      ],
+      "notes": ["候補者本人や自民党側の指示・関与を示す報道は確認できない"],
+      "updateBeforeRecording": true
+    },
+    {
+      "id": "s016",
+      "kind": "medical-table",
+      "durationSec": 170,
+      "title": "月額上限は上昇、年間上限は新設",
+      "subtitle": "高額療養費制度、2026年8月診療分から変更",
+      "badges": [
+        {"label": "厚生労働省", "status": "verified"},
+        {"label": "2026年8月", "status": "verified"}
+      ],
+      "onScreen": ["1,160万円以上：270,300円＋1％／年間168万円", "770万～1,160万円：179,100円＋1％／年間111万円", "370万～770万円：85,800円＋1％／年間53万円", "370万円未満：61,500円／年間53万円", "住民税非課税：36,900円／年間29万円", "医療費100万円の例：87,430円 → 92,940円"],
+      "visuals": [{"type": "comparison-table", "layout": "four-columns-five-rows-plus-example"}],
+      "speakerFlow": [
+        {"speaker": "china_ai", "purpose": "見出しを読む"},
+        {"speaker": "america_ai", "purpose": "制度変更の概要を読む"},
+        {"speaker": "human_cue", "purpose": "表と具体例を説明する"}
+      ],
+      "humanCue": "月額上限の引き上げ、年間上限の新設、多数回該当の原則維持を数字で説明する。",
+      "sourceLabel": "厚生労働省",
+      "sources": [{"name": "厚生労働省 高額療養費制度の見直し", "date": "2026-07-31", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html", "strength": "A"}],
+      "notes": ["収録直前に公式表の更新を再確認する"],
+      "updateBeforeRecording": true
+    },
+    {
+      "id": "s017",
+      "kind": "impact-split",
+      "durationSec": 120,
+      "title": "誰の負担が増え、誰が軽くなる？",
+      "badges": [{"label": "厚労省の説明", "status": "verified"}],
+      "onScreen": ["負担が増えやすい：短期の高額治療・年間上限へ届かない人", "軽くなる可能性：年間を通じた高額治療・多数回該当・一部低所得者", "短期療養者へ追加負担／長期療養者・低所得者の安全網を強化"],
+      "visuals": [{"type": "two-impact-cards", "layout": "increase-versus-decrease"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "短期治療と長期治療の影響差を説明する"}],
+      "humanCue": "年間総額と月ごとの資金繰りを分けて評価する。",
+      "sourceLabel": "厚生労働省",
+      "sources": [{"name": "厚生労働省 高額療養費制度の見直し", "date": "2026-07-31", "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html", "strength": "A"}],
+      "notes": ["患者を笑いの対象にしない"],
+      "updateBeforeRecording": true
+    },
+    {
+      "id": "s018",
+      "kind": "synthesis",
+      "durationSec": 90,
+      "title": "今回のまとめ",
+      "badges": [{"label": "まとめ", "status": "verified"}],
+      "onScreen": ["国家情報局：政府が情報を横断して見る力を強める", "不在者投票：本人の意思を管理者が置き換えた", "高額療養費：月と年で負担の方向を組み替えた", "本人の確認／外部監督／記録／訂正"],
+      "visuals": [{"type": "three-line-synthesis", "layout": "three-topics-bottom-principles"}],
+      "speakerFlow": [{"speaker": "human_cue", "purpose": "本編をまとめる"}],
+      "humanCue": "見えない場所で処理されるものを、見える制度にするという結論を示す。",
+      "sourceLabel": "各スライド参照",
+      "sources": [],
+      "notes": ["速報前の本編まとめ"],
+      "updateBeforeRecording": false
+    },
+    {
+      "id": "s019",
+      "kind": "breaking-news",
+      "durationSec": 120,
+      "title": "最後に速報｜プーチン氏、択捉島を初訪問",
+      "subtitle": "ロシアの国家元首が実効支配を可視化",
+      "badges": [
+        {"label": "2026年8月13日", "status": "verified"},
+        {"label": "速報", "status": "verified"}
+      ],
+      "onScreen": ["プーチン氏による択捉島初訪問", "水産加工施設・病院・学校などを視察", "日本：北方四島は日本固有の領土／ロシア大使を呼び抗議", "ロシア：自国の主権下にある領土／大統領の国内訪問", "訪問は法的決着ではないが、実効支配を可視化する"],
+      "visuals": [{"type": "map-plus-two-positions", "layout": "left-map-right-japan-russia"}],
+      "speakerFlow": [
+        {"speaker": "china_ai", "purpose": "速報タイトルを読む"},
+        {"speaker": "america_ai", "purpose": "訪問と日本政府の抗議を紹介する"},
+        {"speaker": "human_cue", "purpose": "政治的意味と日露関係を説明して締める"}
+      ],
+      "humanCue": "国家元首本人の訪問が実効支配を可視化する意味を説明する。訪問は領有権の法的決着ではないと明示する。",
+      "sourceLabel": "Reuters／Associated Press／The Guardian",
+      "sources": [
+        {"name": "Reuters Putin visits disputed Kuril island", "date": "2026-08-13", "url": "https://www.reuters.com/world/russias-putin-visits-disputed-kuril-islands-samples-fish-roe-media-say-2026-08-13/", "strength": "B"},
+        {"name": "Associated Press Putin first visit", "date": "2026-08-13", "url": "https://apnews.com/article/bc9cf6a0aa3fdbed5264d32297d740b4", "strength": "B"},
+        {"name": "The Guardian Japan condemns visit", "date": "2026-08-13", "url": "https://www.theguardian.com/world/2026/aug/13/japan-condemns-vladimir-putin-visit-kuril-islands", "strength": "B"}
+      ],
+      "notes": ["このスライドで番組を終える", "日本とロシア双方の立場を表示する"],
+      "updateBeforeRecording": true
+    }
+  ]
+}

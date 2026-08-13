@@ -1,0 +1,401 @@
+{
+  "episodeId": "2026-08-14-national-intelligence-palantir",
+  "title": "国家の目は誰が見張るのか",
+  "date": "2026-08-14",
+  "voicevox": {
+    "baseUrl": "http://127.0.0.1:50021",
+    "defaultSpeakers": {
+      "china_ai": 8,
+      "america_ai": 13
+    }
+  },
+  "presentation": {
+    "googleSlidesUrl": "https://docs.google.com/presentation/d/1ADa7A2YC1wgDTZmP7jygqO_StRPjxk568_D5GcJ18x0/edit",
+    "exportedSlidesDir": ""
+  },
+  "slides": [
+    {
+      "slideId": "s001",
+      "slideNumber": 1,
+      "title": "国家の目は誰が見張るのか",
+      "notes": "AIは番組タイトルと構成だけを読む。詳細説明はあずまぐ。",
+      "visual": {"type": "title"},
+      "lines": [
+        {
+          "id": "s001-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "あずまぐ同志、本日の政経ニュースコーナーは、『国家の目は誰が見張るのか』です。",
+          "note": "タイトルのみ"
+        },
+        {
+          "id": "s001-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "特集は国家情報局とパランティアです。後半は政界珍景を二本、最後にプーチン大統領の択捉島訪問を速報で扱います。",
+          "note": "構成概要のみ"
+        },
+        {
+          "id": "s001-l003",
+          "speaker": "human_cue",
+          "text": "情報、一票、医療費、領土という四つの話題を、本人から見えにくい場所で誰が決め、誰が監督するのかという共通軸で紹介する。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    },
+    {
+      "slideId": "s002",
+      "slideNumber": 2,
+      "title": "本日の4本",
+      "notes": "見出し一覧。",
+      "visual": {"type": "agenda"},
+      "lines": [
+        {
+          "id": "s002-l001",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "本日の特集は、国家情報局、その目は誰のものか。政界珍景は、老人ホームの不在者投票偽造と、高額療養費制度の上限見直しです。",
+          "note": "見出しのみ"
+        },
+        {
+          "id": "s002-l002",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "最後に、プーチン大統領が択捉島を初めて訪問したニュースをお伝えします。",
+          "note": "見出しのみ"
+        },
+        {
+          "id": "s002-l003",
+          "speaker": "human_cue",
+          "text": "特集では制度、技術、契約、監督を混同せずに分けて見ると説明する。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    },
+    {
+      "slideId": "s003",
+      "slideNumber": 3,
+      "title": "国家情報局、その『目』は誰のものか",
+      "notes": "特集導入。",
+      "visual": {"type": "feature-title"},
+      "lines": [
+        {
+          "id": "s003-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "本日の特集は、『国家情報局、その目は誰のものか。パランティアと日本のAI・情報主権』です。",
+          "note": "特集タイトルのみ"
+        },
+        {
+          "id": "s003-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "日本では2026年7月31日、各行政機関の情報を総合して整理する国家情報局が発足しました。一方、防衛分野では、自衛隊が日米共同演習でパランティアのAI・データ分析基盤を使ったと報じられています。",
+          "note": "概要のみ。評価しない"
+        },
+        {
+          "id": "s003-l003",
+          "speaker": "human_cue",
+          "text": "国家情報局とPalantirを直結させない。確認できる接点は防衛省・自衛隊であり、国家情報局との直接契約や行政データの国外移転は確認できないと整理する。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    },
+    {
+      "slideId": "s004",
+      "slideNumber": 4,
+      "title": "国家情報局は何が変わった？",
+      "notes": "法成立から発足まで。",
+      "visual": {"type": "timeline"},
+      "lines": [
+        {
+          "id": "s004-l001",
+          "speaker": "human_cue",
+          "text": "5月27日成立、6月3日公布、7月31日発足の時系列を説明する。既存機関を全吸収した日本版CIAではなく、各機関を残したまま官邸の調整・統合機能を強化した制度だと説明する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s005",
+      "slideNumber": 5,
+      "title": "情報はどこから、どこへ流れる？",
+      "notes": "省庁から国家情報局、首相・閣僚への流れ。",
+      "visual": {"type": "flow-diagram"},
+      "lines": [
+        {
+          "id": "s005-l001",
+          "speaker": "human_cue",
+          "text": "警察庁、外務省、防衛省、公安調査庁などから国家情報局・国家情報会議へ資料と情報が提供され、総合整理・分析された情報が首相や関係閣僚の意思決定へ使われる流れを説明する。横断分析の利点と、誤情報まで政府全体へ広がる危険を併記する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s006",
+      "slideNumber": 6,
+      "title": "対象は『安全保障』だけではない",
+      "notes": "所掌の広さ。",
+      "visual": {"type": "scope"},
+      "lines": [
+        {
+          "id": "s006-l001",
+          "speaker": "human_cue",
+          "text": "外国情報活動への対処や特定秘密だけでなく、内閣の重要政策に関する情報収集・調査まで所掌に含まれることを説明する。何を重要とし、誰を対象にし、どの期間保存するかという境界が必要だと指摘する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s007",
+      "slideNumber": 7,
+      "title": "新しい逮捕権・盗聴権が生えたわけではない",
+      "notes": "強制捜査権とデータ分析能力を分ける。",
+      "visual": {"type": "powers-versus-capability"},
+      "lines": [
+        {
+          "id": "s007-l001",
+          "speaker": "human_cue",
+          "text": "今回の設置法に国家情報局固有の逮捕、捜索・差押え、通信傍受の新設規定は確認できないと説明する。一方、既存情報の横断検索と結合によって、行政が個人や団体を把握する能力は高まり得ると説明する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s008",
+      "slideNumber": 8,
+      "title": "強い情報機関に、強い監督はあるか",
+      "notes": "秘密と監督の両立。",
+      "visual": {"type": "oversight"},
+      "lines": [
+        {
+          "id": "s008-l001",
+          "speaker": "human_cue",
+          "text": "秘密情報の内容を公開することと、秘密の使い方を外部監査することは別だと説明する。活動件数、法的根拠、目的外利用、検索履歴、違反と是正、誤情報の修正を独立した仕組みで確認できる必要があると述べる。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s009",
+      "slideNumber": 9,
+      "title": "パランティア――確認できた接点",
+      "notes": "公式確認、報道、未確認を分ける。",
+      "visual": {"type": "evidence-ladder"},
+      "lines": [
+        {
+          "id": "s009-l001",
+          "speaker": "human_cue",
+          "text": "防衛相のPalantir訪問は防衛省公式、共同演習での利用、約2.8億円、Gothamという製品名は朝日新聞報道、国家情報局との直接契約は未確認という三段階を説明する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s010",
+      "slideNumber": 10,
+      "title": "『情報を渡す』を3段階に分ける",
+      "notes": "製品利用と国外移転を同一視しない。",
+      "visual": {"type": "three-level-risk"},
+      "lines": [
+        {
+          "id": "s010-l001",
+          "speaker": "human_cue",
+          "text": "行政機関から国家情報局への提供は確認済み、自衛隊データをPalantir製品で処理したことは報道されているが構成は不明、Palantir社や米国政府へのデータ移転は未確認と分ける。製品を使うことと外国政府へ全データを渡すことは同じではないと説明する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s011",
+      "slideNumber": 11,
+      "title": "契約で確認すべき10項目",
+      "notes": "情報主権を契約条件で確認する。",
+      "visual": {"type": "checklist"},
+      "lines": [
+        {
+          "id": "s011-l001",
+          "speaker": "human_cue",
+          "text": "データ保存場所、閉鎖網、暗号鍵、ベンダーアクセス、保守承認、AI学習への再利用、米軍等との接続、監査ログ、完全削除、他製品への移行形式の10項目を説明する。会社の国籍より、データ、鍵、アクセス、ログ、退出を誰が握るかを見る。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s012",
+      "slideNumber": 12,
+      "title": "AI主権は『国産モデル』だけでは決まらない",
+      "notes": "データから退出までの5層。",
+      "visual": {"type": "layered-sovereignty"},
+      "lines": [
+        {
+          "id": "s012-l001",
+          "speaker": "human_cue",
+          "text": "データ、計算資源・クラウド、統合基盤、AIモデル、運用・退出の5層を説明する。国産モデルでも基盤、クラウド、運用、移行能力を海外企業へ依存すれば主権は完成しないと述べる。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s013",
+      "slideNumber": 13,
+      "title": "見る力と、見張る力",
+      "notes": "特集の結論。",
+      "visual": {"type": "feature-summary"},
+      "lines": [
+        {
+          "id": "s013-l001",
+          "speaker": "human_cue",
+          "text": "省庁間共有、迅速な分析、サイバー・テロ・外国情報活動への対応という利点を認めたうえで、対象と目的の明文化、検索記録、独立監督、契約監査、誤情報の訂正を同時に整えるべきだとまとめる。",
+          "note": "特集まとめ"
+        }
+      ]
+    },
+    {
+      "slideId": "s014",
+      "slideNumber": 14,
+      "title": "ここから政界珍景",
+      "notes": "政界珍景のセクション開始。",
+      "visual": {"type": "section"},
+      "lines": [
+        {
+          "id": "s014-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "ここから政界珍景です。一つ目は、『本人が投票所へ行って初めて発覚』です。",
+          "note": "見出しのみ"
+        },
+        {
+          "id": "s014-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "二つ目は、『月の天井を上げ、年の天井をつくる』。高額療養費制度の見直しです。",
+          "note": "見出しのみ"
+        },
+        {
+          "id": "s014-l003",
+          "speaker": "human_cue",
+          "text": "被害者や患者を笑うのではなく、制度と管理の奇妙さを扱うと導入する。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    },
+    {
+      "slideId": "s015",
+      "slideNumber": 15,
+      "title": "本人が投票所へ行って初めて発覚",
+      "notes": "老人ホーム不在者投票偽造。",
+      "visual": {"type": "voting-case"},
+      "lines": [
+        {
+          "id": "s015-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "政界珍景、一つ目。『本人が投票所へ行って初めて発覚』です。",
+          "note": "タイトルのみ"
+        },
+        {
+          "id": "s015-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "2025年7月の参議院選挙で、大阪府内の老人ホーム二施設の入所者35人分について、本人に無断で不在者投票が行われました。施設関係者三人が書類送検され、2026年2月には主導した元社員へ執行猶予付きの有罪判決が出たと報じられています。",
+          "note": "概要のみ"
+        },
+        {
+          "id": "s015-l003",
+          "speaker": "human_cue",
+          "text": "指定施設の不在者投票制度、本人が通常の投票所へ行ったことで発覚した経緯、候補者・政党側の関与は確認されていない点を説明する。外部立会人、無作為監査、本人通知、記録保存を対策として検討する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s016",
+      "slideNumber": 16,
+      "title": "月額上限は上昇、年間上限は新設",
+      "notes": "高額療養費制度の数字。",
+      "visual": {"type": "medical-table"},
+      "lines": [
+        {
+          "id": "s016-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "政界珍景、二つ目。『月額上限は上昇、年間上限は新設』です。",
+          "note": "タイトルのみ"
+        },
+        {
+          "id": "s016-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "2026年8月から、高額療養費制度の月ごとの自己負担上限が引き上げられました。一方で年間上限が新設され、多数回該当の上限は原則として維持されます。",
+          "note": "概要のみ"
+        },
+        {
+          "id": "s016-l003",
+          "speaker": "human_cue",
+          "text": "所得区分ごとの旧上限、新上限、年間上限を表で説明する。年収約370万～770万円、医療費100万円の例では87,430円から92,940円へ5,510円増える。年間上限は8月から翌7月単位だと説明する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s017",
+      "slideNumber": 17,
+      "title": "誰の負担が増え、誰が軽くなる？",
+      "notes": "短期治療と長期治療の影響差。",
+      "visual": {"type": "impact-split"},
+      "lines": [
+        {
+          "id": "s017-l001",
+          "speaker": "human_cue",
+          "text": "一度の手術や年に数回だけ制度を利用する人は負担が増えやすく、年間を通じて高額治療が続く人は年間上限や多数回該当で軽くなる場合があると説明する。年間総額と月ごとの資金繰りを分けて評価する。",
+          "note": "詳細説明"
+        }
+      ]
+    },
+    {
+      "slideId": "s018",
+      "slideNumber": 18,
+      "title": "今回のまとめ",
+      "notes": "速報前の全体まとめ。",
+      "visual": {"type": "synthesis"},
+      "lines": [
+        {
+          "id": "s018-l001",
+          "speaker": "human_cue",
+          "text": "国家情報局、不在者投票、高額療養費の共通点を、当事者から見えにくい場所で重要な処理が行われることだとまとめる。本人の確認、外部監督、記録、訂正の四つを必要条件として示す。",
+          "note": "番組本編のまとめ"
+        }
+      ]
+    },
+    {
+      "slideId": "s019",
+      "slideNumber": 19,
+      "title": "最後に速報｜プーチン氏、択捉島を初訪問",
+      "notes": "このスライドで番組を終える。後ろにまとめを置かない。",
+      "visual": {"type": "breaking-news"},
+      "lines": [
+        {
+          "id": "s019-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "最後に速報です。『プーチン大統領、択捉島を初訪問』です。",
+          "note": "速報タイトルのみ"
+        },
+        {
+          "id": "s019-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "ロシアのプーチン大統領は2026年8月13日、ロシアが実効支配し、日本が領有権を主張する択捉島を初めて訪問しました。日本政府はロシア大使を呼び、強く抗議しています。",
+          "note": "概要のみ"
+        },
+        {
+          "id": "s019-l003",
+          "speaker": "human_cue",
+          "text": "ロシア国家元首本人の訪問が実効支配を可視化する意味、日本とロシア双方の立場、平和条約交渉停止後の対露外交を説明して締める。訪問は法的決着ではないことも明示する。",
+          "note": "詳細説明と締め"
+        }
+      ]
+    }
+  ]
+}

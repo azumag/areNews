@@ -1,0 +1,28 @@
+{
+  "episodeId": "2026-08-14-national-intelligence-palantir",
+  "title": "政経ニュースコーナー 2026-08-14｜国家の目は誰が見張るのか",
+  "status": "generated",
+  "layoutVersion": "v3-feature-broadcast",
+  "repository": "azumag/areNews",
+  "sourceFiles": [
+    "selection.md",
+    "sources.md",
+    "slides.md",
+    "slide-spec.json",
+    "script.json"
+  ],
+  "googleSlides": {
+    "url": "https://docs.google.com/presentation/d/1ADa7A2YC1wgDTZmP7jygqO_StRPjxk568_D5GcJ18x0/edit",
+    "presentationId": "1ADa7A2YC1wgDTZmP7jygqO_StRPjxk568_D5GcJ18x0",
+    "slideCount": 19
+  },
+  "generatedArtifacts": {
+    "pptx": "national-intelligence-palantir-2026-08-14.pptx",
+    "montage": "montage.png"
+  },
+  "validation": {
+    "renderedSlides": 19,
+    "overflowTest": "passed",
+    "googleSlidesOutlineVerified": true
+  }
+}
