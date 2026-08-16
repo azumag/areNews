@@ -1,0 +1,163 @@
+{
+  "episodeId": "2026-08-16-seikai-chinkei-light",
+  "title": "メロン、ゴミ箱、To Do",
+  "date": "2026-08-16",
+  "voicevox": {
+    "baseUrl": "http://127.0.0.1:50021",
+    "defaultSpeakers": {
+      "china_ai": 8,
+      "america_ai": 13
+    }
+  },
+  "presentation": {
+    "googleSlidesUrl": "",
+    "exportedSlidesDir": ""
+  },
+  "slides": [
+    {
+      "slideId": "s001",
+      "slideNumber": 1,
+      "title": "メロン、ゴミ箱、To Do",
+      "notes": "軽めの政界珍景3景。AIは見出しだけ。",
+      "visual": {"type": "title", "motifs": ["melon", "binface", "notepad"]},
+      "lines": [
+        {
+          "id": "s001-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "あずまぐ同志、今日は特集なし。軽めの政界珍景を三本だけです。",
+          "note": "導入"
+        },
+        {
+          "id": "s001-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "メロン、ゴミ箱、手書きのTo Doメモです。政治ニュースの小道具としては、かなり自由な三点セットですね。",
+          "note": "見出しのみ"
+        },
+        {
+          "id": "s001-l003",
+          "speaker": "human_cue",
+          "text": "今日は重い制度論を休み、外交・選挙・為替から見た目の強い3件だけを短く扱うと説明する。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    },
+    {
+      "slideId": "s002",
+      "slideNumber": 2,
+      "title": "外交ギフトが『メロンゲート』に",
+      "notes": "Pamela Anderson比較の発言者を豪首相と誤認しない。",
+      "visual": {"type": "diplomacy-gaffe", "motif": "melon"},
+      "lines": [
+        {
+          "id": "s002-l001",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "最初は豪州の『メロンゲート』です。高市総理が贈った静岡のクラウンメロンをめぐるポッドキャストのやり取りが、豪州国内で政治問題になりました。",
+          "note": "概要のみ"
+        },
+        {
+          "id": "s002-l002",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "豪州野党は謝罪を求めましたが、日本側は首脳間の信頼関係に問題はないとの姿勢です。果物は無事でも、話だけ熟しすぎました。",
+          "note": "概要＋短いウィット"
+        },
+        {
+          "id": "s002-l003",
+          "speaker": "human_cue",
+          "text": "5月のメロン贈答の外交的意味、ポッドキャストでの実際のやり取り、Pamela Andersonとの比較は司会者発言である点、豪州側だけで大きく炎上した温度差を説明する。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    },
+    {
+      "slideId": "s003",
+      "slideNumber": 3,
+      "title": "2位、Count Binface",
+      "notes": "英国Clacton補選。",
+      "visual": {"type": "election-oddity", "motif": "binface"},
+      "lines": [
+        {
+          "id": "s003-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "次は英国です。クラクटन補選でナイジェル・ファラージ氏が約63％で再当選しました。",
+          "note": "概要のみ"
+        },
+        {
+          "id": "s003-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "そして2位は、銀色のゴミ箱型ヘルメットで出馬する風刺候補、Count Binface。9,455票、26.7％でした。選挙結果の二度見部門なら当選です。",
+          "note": "数字＋短いウィット"
+        },
+        {
+          "id": "s003-l003",
+          "speaker": "human_cue",
+          "text": "ファラージ氏が一度辞職して自ら補選を起こし再出馬した経緯、主要政党の多くが候補を出さなかったこと、34候補という異例の選挙になったことを説明する。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    },
+    {
+      "slideId": "s004",
+      "slideNumber": 4,
+      "title": "To Do：Buy Japanese Yen $5–10 bil",
+      "notes": "Reuters写真で確認されたベッセント財務長官のメモ。",
+      "visual": {"type": "government-note", "motif": "notepad"},
+      "lines": [
+        {
+          "id": "s004-l001",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "最後は米国です。キャンプ・デービッドの閣僚会議で、ベッセント財務長官の手書きメモに『日本円を50億から100億ドル買う』というTo Doが書かれ、Reutersの写真に写りました。",
+          "note": "概要のみ"
+        },
+        {
+          "id": "s004-l002",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "その後、日米共同の円買い介入が確認されています。国家規模の為替政策も、手元だけ見ると今日の買い物リストです。",
+          "note": "結果＋短いウィット"
+        },
+        {
+          "id": "s004-l003",
+          "speaker": "human_cue",
+          "text": "7月31日のReuters写真、同日時点ですでに介入可能性自体は報じられていたこと、8月3日に日米共同介入が確認された流れを説明する。『極秘情報漏えい』と過剰に言わない。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    },
+    {
+      "slideId": "s005",
+      "slideNumber": 5,
+      "title": "政治は、ときどき小道具が強すぎる",
+      "notes": "締め。",
+      "visual": {"type": "closing", "motifs": ["melon", "binface", "notepad"]},
+      "lines": [
+        {
+          "id": "s005-l001",
+          "speaker": "china_ai",
+          "voicevoxSpeakerId": 8,
+          "text": "今日の三景は、外交のメロン、選挙のゴミ箱、為替のTo Doでした。中身は政治ですが、画面だけ見ると別番組です。",
+          "note": "振り返り"
+        },
+        {
+          "id": "s005-l002",
+          "speaker": "america_ai",
+          "voicevoxSpeakerId": 13,
+          "text": "政治の威厳も、ときどき小道具には勝てません。では、あずまぐさん、締めをどうぞ。",
+          "note": "締め"
+        },
+        {
+          "id": "s005-l003",
+          "speaker": "human_cue",
+          "text": "3景を一言ずつ振り返って締める。消費税特集は後日に回すと必要なら触れる。",
+          "note": "VOICEVOXでは読ませない"
+        }
+      ]
+    }
+  ]
+}
