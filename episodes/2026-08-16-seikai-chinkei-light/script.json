@@ -10,7 +10,7 @@
     }
   },
   "presentation": {
-    "googleSlidesUrl": "",
+    "googleSlidesUrl": "https://docs.google.com/presentation/d/1N2brFx6yUZWohidLR8EXd66eEx1PUjcXUcuGqI6jPIs/edit",
     "exportedSlidesDir": ""
   },
   "slides": [
@@ -76,14 +76,14 @@
       "slideId": "s003",
       "slideNumber": 3,
       "title": "2位、Count Binface",
-      "notes": "英国Clacton補選。",
+      "notes": "英国クラクトン補選。",
       "visual": {"type": "election-oddity", "motif": "binface"},
       "lines": [
         {
           "id": "s003-l001",
           "speaker": "china_ai",
           "voicevoxSpeakerId": 8,
-          "text": "次は英国です。クラクटन補選でナイジェル・ファラージ氏が約63％で再当選しました。",
+          "text": "次は英国です。クラクトン補選でナイジェル・ファラージ氏が約63％で再当選しました。",
           "note": "概要のみ"
         },
         {
